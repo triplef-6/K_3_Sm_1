@@ -19,5 +19,4 @@ public class GetStudentGroupByldRequest {
     public void setId(Long id) {
         this.id = id;
     }
-
 }
