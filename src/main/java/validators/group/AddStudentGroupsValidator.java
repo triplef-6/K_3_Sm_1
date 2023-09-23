@@ -16,7 +16,6 @@ public class AddStudentGroupsValidator implements Validator<AddStudentGroupsRequ
 
         validateString.validateStringNotEmpty(request.getName(), errors, "name", "empty");
         validateString.validateStringNotNull(request.getName(), errors, "name", "null");
-
         validateString.validateStringBig(request.getName(), errors, "name", "big", 15);
 
         return errors;
