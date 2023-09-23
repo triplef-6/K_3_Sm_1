@@ -14,7 +14,7 @@ public class GetStudentByIdValidator implements Validator< GetStudentByIdRequest
     public List<String> validator( GetStudentByIdRequest request) {
         List<String> errors = new ArrayList<>();
 
-        validatorId.ValidateIdNotZero(request.getId(), errors, "Id", "zero");
+        validatorId.validateIdNotZero(request.getId(), errors, "Id", "zero");
 
         return errors;
     }

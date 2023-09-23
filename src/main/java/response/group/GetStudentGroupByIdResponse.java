@@ -1,13 +1,13 @@
-package response.Group;
+package response.group;
 /**
  * получение группы по id
  */
-public class GetStudentGroupByldResponse {
+public class GetStudentGroupByIdResponse {
     private String name;
 
-    public GetStudentGroupByldResponse() {}
+    public GetStudentGroupByIdResponse() {}
 
-    public GetStudentGroupByldResponse(String name) {
+    public GetStudentGroupByIdResponse(String name) {
         this.name = name;
     }
 

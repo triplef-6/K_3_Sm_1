@@ -1,4 +1,4 @@
-package response.Group;
+package response.group;
 
 import java.util.List;
 

@@ -1,4 +1,4 @@
-package response.Group;
+package response.group;
 
 /**
  * добавление новой группы

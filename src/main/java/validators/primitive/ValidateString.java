@@ -6,7 +6,7 @@ import java.util.List;
  * Валидатор строк
  */
 public class ValidateString {
-    public boolean ValidateStringNotEmpty(String str, List<String> errors, String fieldName, String errorMessage) {
+    public boolean validateStringNotEmpty(String str, List<String> errors, String fieldName, String errorMessage) {
         if (str.equals("")) {
             errors.add(fieldName + ": " + errorMessage);
             return false;
@@ -14,7 +14,7 @@ public class ValidateString {
         return true;
     }
 
-    public boolean ValidateStringNotNull(String str, List<String> errors, String fieldName, String errorMessage) {
+    public boolean validateStringNotNull(String str, List<String> errors, String fieldName, String errorMessage) {
         if (str == null) {
             errors.add(fieldName + ": " + errorMessage);
             return false;
@@ -22,7 +22,7 @@ public class ValidateString {
         return true;
     }
 
-    public boolean ValidateStringBig(String str, List<String> errors, String fieldName, String errorMessage, int k) {
+    public boolean validateStringBig(String str, List<String> errors, String fieldName, String errorMessage, int k) {
         if (str.length() > k) {
             errors.add(fieldName + ": " + errorMessage);
             return false;

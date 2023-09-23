@@ -1,20 +1,20 @@
 package validators.group;
 
-import request.group.GetStudentGroupByldRequest;
+import request.group.GetStudentGroupByIdRequest;
 import validators.primitive.ValidatorId;
 import validators.Validator;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class GetStudentGroupByldValidator implements Validator<GetStudentGroupByldRequest> {
+public class GetStudentGroupByldValidator implements Validator<GetStudentGroupByIdRequest> {
     private ValidatorId validatorId;
 
     @Override
-    public List<String> validator(GetStudentGroupByldRequest request) {
+    public List<String> validator(GetStudentGroupByIdRequest request) {
         List<String> errors = new ArrayList<>();
 
-        validatorId.ValidateIdNotZero(request.getId(), errors, "id", "zero");
+        validatorId.validateIdNotZero(request.getId(), errors, "id", "zero");
 
         return errors;
     }

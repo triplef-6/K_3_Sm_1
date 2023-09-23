@@ -14,10 +14,10 @@ public class AddStudentGroupsValidator implements Validator<AddStudentGroupsRequ
     public List<String> validator(AddStudentGroupsRequest request) {
         List<String> errors = new ArrayList<>();
 
-        validateString.ValidateStringNotEmpty(request.getName(), errors, "name", "empty");
-        validateString.ValidateStringNotNull(request.getName(), errors, "name", "null");
+        validateString.validateStringNotEmpty(request.getName(), errors, "name", "empty");
+        validateString.validateStringNotNull(request.getName(), errors, "name", "null");
 
-        validateString.ValidateStringBig(request.getName(), errors, "name", "big", 15);
+        validateString.validateStringBig(request.getName(), errors, "name", "big", 15);
 
         return errors;
     }

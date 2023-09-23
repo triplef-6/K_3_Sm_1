@@ -3,12 +3,12 @@ package request.group;
 /**
  * получение группы по id
  */
-public class GetStudentGroupByldRequest {
+public class GetStudentGroupByIdRequest {
     private long id;
 
-    public GetStudentGroupByldRequest() {}
+    public GetStudentGroupByIdRequest() {}
 
-    public GetStudentGroupByldRequest(long id) {
+    public GetStudentGroupByIdRequest(long id) {
         this.id = id;
     }
 

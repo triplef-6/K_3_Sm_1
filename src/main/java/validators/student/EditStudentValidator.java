@@ -16,21 +16,21 @@ public class EditStudentValidator implements Validator<EditStudentRequest> {
     public List<String> validator(EditStudentRequest request) {
         List<String> errors = new ArrayList<>();
 
-        validateString.ValidateStringNotEmpty(request.getName(), errors, "name", "empty");
-        validateString.ValidateStringNotNull(request.getName(), errors, "name", "null");
-        validateString.ValidateStringBig(request.getName(), errors, "name", "big", 30);
+        validateString.validateStringNotEmpty(request.getName(), errors, "name", "empty");
+        validateString.validateStringNotNull(request.getName(), errors, "name", "null");
+        validateString.validateStringBig(request.getName(), errors, "name", "big", 30);
 
-        validateString.ValidateStringNotEmpty(request.getSurname(), errors, "surname", "empty");
-        validateString.ValidateStringNotNull(request.getSurname(), errors, "surname", "null");
-        validateString.ValidateStringBig(request.getSurname(), errors, "surname", "big", 30);
+        validateString.validateStringNotEmpty(request.getSurname(), errors, "surname", "empty");
+        validateString.validateStringNotNull(request.getSurname(), errors, "surname", "null");
+        validateString.validateStringBig(request.getSurname(), errors, "surname", "big", 30);
 
-        validateString.ValidateStringNotEmpty(request.getPatronymic(), errors, "patronymic", "empty");
-        validateString.ValidateStringNotNull(request.getPatronymic(), errors, "patronymic", "null");
-        validateString.ValidateStringBig(request.getPatronymic(), errors, "patronymic", "big", 30);
+        validateString.validateStringNotEmpty(request.getPatronymic(), errors, "patronymic", "empty");
+        validateString.validateStringNotNull(request.getPatronymic(), errors, "patronymic", "null");
+        validateString.validateStringBig(request.getPatronymic(), errors, "patronymic", "big", 30);
 
-        validatorId.ValidateIdNotZero(request.getId(), errors, "id", "zero");
+        validatorId.validateIdNotZero(request.getId(), errors, "id", "zero");
 
-        validatorId.ValidateIdNotZero(request.getGroupId(), errors, "groupId", "zero");
+        validatorId.validateIdNotZero(request.getGroupId(), errors, "groupId", "zero");
 
         return errors;
 

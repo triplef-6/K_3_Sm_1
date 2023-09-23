@@ -1,6 +1,6 @@
-package validators.student;
+package validators.teacher;
 
-import request.student.AddStudentRequest;
+import request.teacher.AddTeacherRequest;
 import validators.Validator;
 import validators.primitive.ValidateString;
 import validators.primitive.ValidatorId;
@@ -8,12 +8,12 @@ import validators.primitive.ValidatorId;
 import java.util.ArrayList;
 import java.util.List;
 
-public class AddStudentValidator implements Validator<AddStudentRequest> {
+public class AddTeacherValidator implements Validator<AddTeacherRequest> {
     private ValidateString validateString;
     private ValidatorId validatorId;
 
     @Override
-    public List<String> validator(AddStudentRequest request) {
+    public List<String> validator(AddTeacherRequest request) {
         List<String> errors = new ArrayList<>();
 
         validateString.validateStringNotEmpty(request.getName(), errors, "name", "empty");
@@ -27,8 +27,6 @@ public class AddStudentValidator implements Validator<AddStudentRequest> {
         validateString.validateStringNotEmpty(request.getPatronymic(), errors, "patronymic", "empty");
         validateString.validateStringNotNull(request.getPatronymic(), errors, "patronymic", "null");
         validateString.validateStringBig(request.getPatronymic(), errors, "patronymic", "big", 30);
-
-        validatorId.validateIdNotZero(request.getGroupId(), errors, "groupId", "zero");
 
         return errors;
     }

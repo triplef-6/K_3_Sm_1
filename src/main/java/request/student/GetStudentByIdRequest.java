@@ -4,20 +4,16 @@ package request.student;
  * получение студента по id
  */
 public class GetStudentByIdRequest {
-    private Long id;
+    private long id;
 
     public GetStudentByIdRequest() {}
 
-    public GetStudentByIdRequest(Long id) {
+    public GetStudentByIdRequest(long id) {
         this.id = id;
     }
 
-    public Long getId() {
+    public long getId() {
         return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
     }
 
 }
