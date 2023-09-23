@@ -15,16 +15,21 @@ public class AddStudentValidator implements Validator<AddStudentRequest> {
     @Override
     public List<String> validator(AddStudentRequest request) {
         List<String> errors = new ArrayList<>();
+
         validateString.ValidateStringNotEmpty(request.getName(), errors, "name", "empty");
         validateString.ValidateStringNotNull(request.getName(), errors, "name", "null");
-        validateString.ValidateStringBig(request.getName(), errors, "name", "big");
+        validateString.ValidateStringBig(request.getName(), errors, "name", "big", 30);
+
         validateString.ValidateStringNotEmpty(request.getSurname(), errors, "surname", "empty");
         validateString.ValidateStringNotNull(request.getSurname(), errors, "surname", "null");
-        validateString.ValidateStringBig(request.getSurname(), errors, "surname", "big");
+        validateString.ValidateStringBig(request.getSurname(), errors, "surname", "big", 30);
+
         validateString.ValidateStringNotEmpty(request.getPatronymic(), errors, "patronymic", "empty");
         validateString.ValidateStringNotNull(request.getPatronymic(), errors, "patronymic", "null");
-        validateString.ValidateStringBig(request.getPatronymic(), errors, "patronymic", "big");
+        validateString.ValidateStringBig(request.getPatronymic(), errors, "patronymic", "big", 30);
+
         validatorId.ValidateIdNotZero(request.getGroupId(), errors, "groupId", "zero");
+
         return errors;
     }
 }

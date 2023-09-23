@@ -13,7 +13,9 @@ public class GetStudentByGroupValidator implements Validator<GetStudentByGroupRe
     @Override
     public List<String> validator(GetStudentByGroupRequest request) {
         List<String> errors = new ArrayList<>();
+
         validatorId.ValidateIdNotZero(request.getId(), errors, "Id", "zero");
+
         return errors;
     }
 }

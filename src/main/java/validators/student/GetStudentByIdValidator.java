@@ -13,7 +13,9 @@ public class GetStudentByIdValidator implements Validator< GetStudentByIdRequest
     @Override
     public List<String> validator( GetStudentByIdRequest request) {
         List<String> errors = new ArrayList<>();
+
         validatorId.ValidateIdNotZero(request.getId(), errors, "Id", "zero");
+
         return errors;
     }
 }

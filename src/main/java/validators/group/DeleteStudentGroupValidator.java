@@ -13,7 +13,9 @@ public class DeleteStudentGroupValidator implements Validator<DeleteStudentGroup
     @Override
     public List<String> validator(DeleteStudentGroupRequest request) {
         List<String> errors = new ArrayList<>();
+
         validatorId.ValidateIdNotZero(request.getId(), errors, "Id", "zero");
+
         return errors;
     }
 }

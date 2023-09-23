@@ -13,9 +13,12 @@ public class AddStudentGroupsValidator implements Validator<AddStudentGroupsRequ
     @Override
     public List<String> validator(AddStudentGroupsRequest request) {
         List<String> errors = new ArrayList<>();
+
         validateString.ValidateStringNotEmpty(request.getName(), errors, "name", "empty");
         validateString.ValidateStringNotNull(request.getName(), errors, "name", "null");
-        validateString.ValidateStringBig(request.getName(), errors, "name", "big");
+
+        validateString.ValidateStringBig(request.getName(), errors, "name", "big", 15);
+
         return errors;
     }
 }

@@ -22,9 +22,8 @@ public class ValidateString {
         return true;
     }
 
-    public boolean ValidateStringBig(String str, List<String> errors, String fieldName, String errorMessage) {
-        // длинна должна передаватся
-        if (str.length() > 30) {
+    public boolean ValidateStringBig(String str, List<String> errors, String fieldName, String errorMessage, int k) {
+        if (str.length() > k) {
             errors.add(fieldName + ": " + errorMessage);
             return false;
         }

@@ -1,7 +1,7 @@
 package validators.primitive;
 
 import java.util.List;
-
+// не доделан
 /**
  * Валидатор целых чисел
  */
