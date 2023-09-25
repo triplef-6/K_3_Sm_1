@@ -1,16 +1,16 @@
-package response.student;
+package response.teacher;
 
 /**
- * получение студента по id
+ * получение преподавателя по id
  */
-public class GetStudentByIdResponse {
+public class GetTeacherByIdResponse {
     private String surname;
     private String name;
     private String patronymic;
 
-    public GetStudentByIdResponse() {}
+    public GetTeacherByIdResponse() {}
 
-    public  GetStudentByIdResponse(String name, String surname, String patronymic) {
+    public  GetTeacherByIdResponse(String name, String surname, String patronymic) {
 
         this.name = name;
         this.patronymic = patronymic;
