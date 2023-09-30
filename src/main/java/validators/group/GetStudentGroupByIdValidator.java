@@ -7,7 +7,7 @@ import validators.Validator;
 import java.util.ArrayList;
 import java.util.List;
 
-public class GetStudentGroupByldValidator implements Validator<GetStudentGroupByIdRequest> {
+public class GetStudentGroupByIdValidator implements Validator<GetStudentGroupByIdRequest> {
     private ValidatorId validatorId;
 
     @Override
