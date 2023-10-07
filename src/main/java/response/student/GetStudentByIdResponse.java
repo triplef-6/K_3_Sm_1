@@ -7,10 +7,11 @@ public class GetStudentByIdResponse {
     private String surname;
     private String name;
     private String patronymic;
+    private String status;
 
     public GetStudentByIdResponse() {}
 
-    public  GetStudentByIdResponse(String name, String surname, String patronymic) {
+    public  GetStudentByIdResponse(String name, String surname, String patronymic, String status) {
 
         this.name = name;
         this.patronymic = patronymic;
@@ -39,5 +40,13 @@ public class GetStudentByIdResponse {
 
     public void setPatronymic(String patronymic) {
         this.patronymic = patronymic;
+    }
+
+    public String getStatus() {
+        return status;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
     }
 }

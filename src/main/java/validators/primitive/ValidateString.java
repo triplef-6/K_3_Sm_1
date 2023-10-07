@@ -30,4 +30,11 @@ public class ValidateString {
         return true;
     }
 
+    public boolean validateStringStatus(String str, List<String> errors, String fieldName, String errorMessage) {
+        if (!str.equals("учится") && !str.equals("в а/о") && !str.equals("отчислен")) {
+            errors.add(fieldName + ": " + errorMessage);
+            return false;
+        }
+        return true;
+    }
 }

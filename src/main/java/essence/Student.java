@@ -8,10 +8,11 @@ public class Student {
     private String surname;
     private String name;
     private String patronymic;
+    private String status;
 
     public Student() {}
 
-    public Student(Long id, Long groupId, String surname, String name, String patronymic) {
+    public Student(Long id, Long groupId, String surname, String name, String patronymic, String status) {
         this.id = id;
         this.groupId = groupId;
         this.surname = surname;
@@ -57,6 +58,14 @@ public class Student {
 
     public void setPatronymic(String patronymic) {
         this.patronymic = patronymic;
+    }
+
+    public String getStatus() {
+        return status;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
     }
 
     @Override

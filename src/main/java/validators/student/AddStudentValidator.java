@@ -28,6 +28,10 @@ public class AddStudentValidator implements Validator<AddStudentRequest> {
         validateString.validateStringNotNull(request.getPatronymic(), errors, "patronymic", "null");
         validateString.validateStringBig(request.getPatronymic(), errors, "patronymic", "big", 30);
 
+        validateString.validateStringNotEmpty(request.getStatus(), errors, "status", "empty");
+        validateString.validateStringNotNull(request.getStatus(), errors, "status", "null");
+        validateString.validateStringStatus(request.getStatus(), errors, "status", "no");
+
         validatorId.validateIdNotZero(request.getGroupId(), errors, "groupId", "zero");
 
         return errors;
