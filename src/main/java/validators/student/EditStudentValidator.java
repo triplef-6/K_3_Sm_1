@@ -30,11 +30,13 @@ public class EditStudentValidator implements Validator<EditStudentRequest> {
 
         validateString.validateStringNotEmpty(request.getStatus(), errors, "status", "empty");
         validateString.validateStringNotNull(request.getStatus(), errors, "status", "null");
-        validateString.validateStringStatus(request.getStatus(), errors, "status", "no");
+        validateString.validateStringStatus(request.getStatus(), errors, "status", "no status");
 
         validatorId.validateIdNotZero(request.getId(), errors, "id", "zero");
 
-        validatorId.validateIdNotZero(request.getGroupId(), errors, "groupId", "zero");
+        validateString.validateStringNotEmpty(request.getGroupId(), errors, "groupId", "empty");
+        validateString.validateStringNotNull(request.getGroupId(), errors, "groupId", "null");
+        validateString.validateStringInt(request.getGroupId(), errors, "groupId", "no id");
 
         return errors;
 

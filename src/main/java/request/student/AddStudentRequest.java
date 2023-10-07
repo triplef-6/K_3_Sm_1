@@ -4,7 +4,7 @@ package request.student;
  * добавление нового студента
  */
 public class AddStudentRequest {
-    private long groupId;
+    private String groupId;
     private String surname;
     private String name;
     private String patronymic;
@@ -13,7 +13,7 @@ public class AddStudentRequest {
 
     public AddStudentRequest() {}
 
-    public AddStudentRequest(Long groupId, String surname, String name, String patronymic, String status) {
+    public AddStudentRequest(String groupId, String surname, String name, String patronymic, String status) {
         this.groupId = groupId;
         this.surname = surname;
         this.name = name;
@@ -21,7 +21,7 @@ public class AddStudentRequest {
         this.status = status;
     }
 
-    public long getGroupId() {
+    public String getGroupId() {
         return groupId;
     }
 

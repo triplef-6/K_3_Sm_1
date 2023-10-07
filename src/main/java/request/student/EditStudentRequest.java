@@ -5,7 +5,7 @@ package request.student;
  */
 public class EditStudentRequest {
     private Long id;
-    private Long groupId;
+    private String groupId;
     private String surname;
     private String name;
     private String patronymic;
@@ -13,7 +13,7 @@ public class EditStudentRequest {
 
     public EditStudentRequest() {}
 
-    public EditStudentRequest(Long id, Long groupId, String surname, String name, String patronymic, String status) {
+    public EditStudentRequest(Long id, String groupId, String surname, String name, String patronymic, String status) {
         this.id = id;
         this.groupId = groupId;
         this.surname = surname;
@@ -26,7 +26,7 @@ public class EditStudentRequest {
         return id;
     }
 
-    public Long getGroupId() {
+    public String getGroupId() {
         return groupId;
     }
 
