@@ -5,7 +5,6 @@ import java.util.Objects;
 
 public class Lesson {
     private Long id;
-    private Long disciplineId;
     private Long groupId;
     private Long teacherId;
     private LocalDate data;
@@ -13,12 +12,12 @@ public class Lesson {
 
     public Lesson() {}
 
-    public Lesson(Long id, Long disciplineId, Long groupId, Long teacherId, LocalDate data, Integer time) {
+    public Lesson(Long id, Long groupId, Long teacherId, LocalDate data, Integer time) {
         this.id = id;
-        this.disciplineId = disciplineId;
         this.teacherId = teacherId;
         this.time = time;
         this.data = data;
+        this.groupId = groupId;
     }
 
     public Integer getTime() {
@@ -53,14 +52,6 @@ public class Lesson {
         this.groupId = groupId;
     }
 
-    public Long getDisciplineId() {
-        return disciplineId;
-    }
-
-    public void setDisciplineId(Long disciplineId) {
-        this.disciplineId = disciplineId;
-    }
-
     public Long getId() {
         return id;
     }
@@ -74,11 +65,11 @@ public class Lesson {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Lesson lesson = (Lesson) o;
-        return Objects.equals(id, lesson.id) && Objects.equals(disciplineId, lesson.disciplineId) && Objects.equals(groupId, lesson.groupId) && Objects.equals(teacherId, lesson.teacherId) && Objects.equals(data, lesson.data) && Objects.equals(time, lesson.time);
+        return Objects.equals(id, lesson.id) && Objects.equals(groupId, lesson.groupId) && Objects.equals(teacherId, lesson.teacherId) && Objects.equals(data, lesson.data) && Objects.equals(time, lesson.time);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, disciplineId, groupId, teacherId, data, time);
+        return Objects.hash(id, groupId, teacherId, data, time);
     }
 }
