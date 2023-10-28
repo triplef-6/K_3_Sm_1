@@ -2,7 +2,7 @@ package ru_omsu_fctk_simpleserver.validator.lesson;
 
 import ru_omsu_fctk_simpleserver.request.lesson.EditLessonRequest;
 import ru_omsu_fctk_simpleserver.validator.primitive.ValidateDate;
-import ru_omsu_fctk_simpleserver.Validator;
+import ru_omsu_fctk_simpleserver.validator.Validator;
 import ru_omsu_fctk_simpleserver.validator.primitive.ValidateString;
 import ru_omsu_fctk_simpleserver.validator.primitive.ValidatorId;
 

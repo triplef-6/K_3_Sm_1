@@ -1,4 +1,4 @@
-package ru_omsu_fctk_simpleserver;
+package ru_omsu_fctk_simpleserver.validator;
 
 import java.util.List;
 

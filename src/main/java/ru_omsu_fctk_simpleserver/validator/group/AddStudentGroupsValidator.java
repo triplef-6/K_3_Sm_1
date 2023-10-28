@@ -2,7 +2,7 @@ package ru_omsu_fctk_simpleserver.validator.group;
 
 import ru_omsu_fctk_simpleserver.request.group.AddStudentGroupsRequest;
 import ru_omsu_fctk_simpleserver.validator.primitive.ValidateString;
-import ru_omsu_fctk_simpleserver.Validator;
+import ru_omsu_fctk_simpleserver.validator.Validator;
 
 import java.util.ArrayList;
 import java.util.List;

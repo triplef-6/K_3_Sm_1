@@ -1,6 +1,6 @@
 package ru_omsu_fctk_simpleserver.validator.student;
 
-import ru_omsu_fctk_simpleserver.Validator;
+import ru_omsu_fctk_simpleserver.validator.Validator;
 import ru_omsu_fctk_simpleserver.request.student.GetStudentByIdRequest;
 import ru_omsu_fctk_simpleserver.validator.primitive.ValidatorId;
 

@@ -1,7 +1,7 @@
 package ru_omsu_fctk_simpleserver.validator.subject;
 
 import ru_omsu_fctk_simpleserver.request.subject.AddSubjectRequest;
-import ru_omsu_fctk_simpleserver.Validator;
+import ru_omsu_fctk_simpleserver.validator.Validator;
 import ru_omsu_fctk_simpleserver.validator.primitive.ValidateString;
 
 import java.util.ArrayList;
