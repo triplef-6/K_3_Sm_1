@@ -17,12 +17,12 @@ public class ComonResponse<T> {
         details = null;
     }
 
-    public ComonResponse(Integer codeError, String messageError, List<String> ditelse) {
+    public ComonResponse(Integer codeError, String messageError, List<String> details) {
         data = null;
         ok = false;
         this.codeError = codeError;
         this.messageError = messageError;
-        this.details = ditelse;
+        this.details = details;
     }
 
 
