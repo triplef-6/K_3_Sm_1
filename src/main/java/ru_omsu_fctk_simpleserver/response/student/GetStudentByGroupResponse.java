@@ -6,7 +6,6 @@ import java.util.List;
  * получение студентов по id группы
  */
 public class GetStudentByGroupResponse {
-    // спросить про id
     private List<String> listName;
     private List<String> listSurname;
     private List<String> listPatronymic;

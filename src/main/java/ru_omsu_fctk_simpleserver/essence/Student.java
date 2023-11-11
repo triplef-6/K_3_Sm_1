@@ -10,7 +10,7 @@ public class Student {
     private String patronymic;
     private String status;
 
-    public Student() {}
+    //public Student(int i, String surname, String name, String status) {}
 
     public Student(Long id, Long groupId, String surname, String name, String patronymic, String status) {
         this.id = id;
@@ -18,6 +18,15 @@ public class Student {
         this.surname = surname;
         this.name = name;
         this.patronymic = patronymic;
+        this.status = status;
+    }
+
+    public Student(long groupId, String surname, String name, String patronymic) {
+        this.groupId = groupId;
+        this.surname = surname;
+        this.name = name;
+        this.patronymic = patronymic;
+        this.status = status;
     }
 
     public Long getId() {

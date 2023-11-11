@@ -4,10 +4,7 @@ import ru_omsu_fctk_simpleserver.controllers.ComonResponse;
 import ru_omsu_fctk_simpleserver.controllers.ResponseEntity;
 import ru_omsu_fctk_simpleserver.request.group.*;
 import ru_omsu_fctk_simpleserver.response.group.*;
-import ru_omsu_fctk_simpleserver.validator.group.AddStudentGroupsValidator;
-import ru_omsu_fctk_simpleserver.validator.group.DeleteStudentGroupValidator;
-import ru_omsu_fctk_simpleserver.validator.group.EditStudentGroupsValidator;
-import ru_omsu_fctk_simpleserver.validator.group.GetStudentGroupByIdValidator;
+import ru_omsu_fctk_simpleserver.validator.group.*;
 
 import java.util.ArrayList;
 import java.util.List;
