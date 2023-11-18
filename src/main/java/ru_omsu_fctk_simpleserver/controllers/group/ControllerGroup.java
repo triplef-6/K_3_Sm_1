@@ -4,12 +4,18 @@ import ru_omsu_fctk_simpleserver.controllers.ComonResponse;
 import ru_omsu_fctk_simpleserver.controllers.ResponseEntity;
 import ru_omsu_fctk_simpleserver.request.group.*;
 import ru_omsu_fctk_simpleserver.response.group.*;
+import ru_omsu_fctk_simpleserver.services.group.*;
 import ru_omsu_fctk_simpleserver.validator.group.*;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class ControllerGroup {
+    private AddStudentGroupsService addStudentGroupsService;
+    private DeleteStudentGroupService deleteStudentGroupService;
+    private EditStudentGroupsService editStudentGroupsService;
+    private GetStudentGroupsService getStudentGroupsService;
+    private GetStudentGroupByIdService getStudentGroupByIdService;
     private AddStudentGroupsValidator addStudentGroupsValidator;
     private EditStudentGroupsValidator editStudentGroupsValidator;
     private DeleteStudentGroupValidator deleteStudentGroupValidator;
@@ -23,15 +29,15 @@ public class ControllerGroup {
 
         if (errors.isEmpty()) {
             try {
-                AddStudentGroupsService service = new AddStudentGroupsService(request);
-                comonResponse = new ComonResponse<>(service.answer());
+                comonResponse = new ComonResponse<>(addStudentGroupsService.addStudentGroups(request));
             } catch (Exception exception) {
                 status = 422;
-                comonResponse = new ComonResponse<>(6, "Error", errors); // своё сообщение об ошибке
+                comonResponse = new ComonResponse<>(6, "Error", errors);
             }
         } else {
             status = 400;
-            comonResponse = new ComonResponse<>(6, "Error", errors); // своё сообщение об ошибке
+            comonResponse = new ComonResponse<>(6, "Validation error", errors);
+            //comonResponse = new ComonResponse<>(6, "Error", errors);
         }
 
         return new ResponseEntity<>(comonResponse, status);
@@ -45,15 +51,14 @@ public class ControllerGroup {
 
         if (errors.isEmpty()) {
             try {
-                EditStudentGroupsService service = new EditStudentGroupsService(request);
-                comonResponse = new ComonResponse<>(service.answer());
+                comonResponse = new ComonResponse<>(editStudentGroupsService.editStudentGroups(request));
             } catch (Exception exception) {
                 status = 422;
                 comonResponse = new ComonResponse<>(6, "Error", errors); // своё сообщение об ошибке
             }
         } else {
             status = 400;
-            comonResponse = new ComonResponse<>(6, "Error", errors); // своё сообщение об ошибке
+            comonResponse = new ComonResponse<>(6, "Validation error", errors); // своё сообщение об ошибке
         }
 
         return new ResponseEntity<>(comonResponse, status);
@@ -67,15 +72,14 @@ public class ControllerGroup {
 
         if (errors.isEmpty()) {
             try {
-                DeleteStudentGroupService service = new DeleteStudentGroupService(request);
-                comonResponse = new ComonResponse<>(service.answer());
+                comonResponse = new ComonResponse<>(deleteStudentGroupService.deleteStudentGroup(request));
             } catch (Exception exception) {
                 status = 422;
                 comonResponse = new ComonResponse<>(6, "Error", errors); // своё сообщение об ошибке
             }
         } else {
             status = 400;
-            comonResponse = new ComonResponse<>(6, "Error", errors); // своё сообщение об ошибке
+            comonResponse = new ComonResponse<>(6, "Validation error", errors); // своё сообщение об ошибке
         }
 
         return new ResponseEntity<>(comonResponse, status);
@@ -89,15 +93,14 @@ public class ControllerGroup {
 
         if (errors.isEmpty()) {
             try {
-                GetStudentGroupByIdService service = new GetStudentGroupByIdService(request);
-                comonResponse = new ComonResponse<>(service.answer());
+                comonResponse = new ComonResponse<>(getStudentGroupByIdService.getStudentGroupById(request));
             } catch (Exception exception) {
                 status = 422;
                 comonResponse = new ComonResponse<>(6, "Error", errors); // своё сообщение об ошибке
             }
         } else {
             status = 400;
-            comonResponse = new ComonResponse<>(6, "Error", errors); // своё сообщение об ошибке
+            comonResponse = new ComonResponse<>(6, "Validation error", errors); // своё сообщение об ошибке
         }
 
         return new ResponseEntity<>(comonResponse, status);
@@ -108,8 +111,7 @@ public class ControllerGroup {
         ComonResponse<GetStudentGroupsResponse> comonResponse;
 
         try {
-            GetStudentGroupsService service = new GetStudentGroupsService(request);
-            comonResponse = new ComonResponse<>(service.answer());
+            comonResponse = new ComonResponse<>(getStudentGroupsService.getStudentGroups(request));
         } catch (Exception exception) {
             status = 422;
             comonResponse = new ComonResponse<>(6, "Error", new ArrayList<>()); // своё сообщение об ошибке
