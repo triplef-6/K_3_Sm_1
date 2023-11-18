@@ -4,11 +4,17 @@ import ru_omsu_fctk_simpleserver.controllers.ComonResponse;
 import ru_omsu_fctk_simpleserver.controllers.ResponseEntity;
 import ru_omsu_fctk_simpleserver.request.student.*;
 import ru_omsu_fctk_simpleserver.response.student.*;
+import ru_omsu_fctk_simpleserver.services.student.*;
 import ru_omsu_fctk_simpleserver.validator.student.*;
 
 import java.util.List;
 
 public class ControllerStudent {
+    private AddStudentService addStudentService;
+    private EditStudentService editStudentService;
+    private DeleteStudentService deleteStudentService;
+    private GetStudentByIdService getStudentByIdService;
+    private GetStudentByGroupService getStudentByGroupService;
     private AddStudentValidator addStudentValidator;
     private EditStudentValidator editStudentValidator;
     private DeleteStudentValidator deleteStudentValidator;
@@ -23,21 +29,20 @@ public class ControllerStudent {
 
         if (errors.isEmpty()) {
             try {
-                AddStudentService service = new AddStudentService(request);
-                comonResponse = new ComonResponse<>(service.answer());
+                comonResponse = new ComonResponse<>(addStudentService.addStudent(request));
             } catch (Exception exception) {
                 status = 422;
                 comonResponse = new ComonResponse<>(6, "Error", errors); // своё сообщение об ошибке
             }
         } else {
             status = 400;
-            comonResponse = new ComonResponse<>(6, "Error", errors); // своё сообщение об ошибке
+            comonResponse = new ComonResponse<>(6, "Validation error", errors); // своё сообщение об ошибке
         }
 
         return new ResponseEntity<>(comonResponse, status);
     }
 
-    public ResponseEntity<ComonResponse<EditStudentResponse>> editStudentGroups(EditStudentRequest request) {
+    public ResponseEntity<ComonResponse<EditStudentResponse>> editStudent(EditStudentRequest request) {
         int status = 200;
         ComonResponse<EditStudentResponse> comonResponse;
 
@@ -45,21 +50,20 @@ public class ControllerStudent {
 
         if (errors.isEmpty()) {
             try {
-                EditStudentService service = new EditStudentService(request);
-                comonResponse = new ComonResponse<>(service.answer());
+                comonResponse = new ComonResponse<>(editStudentService.editStudent(request));
             } catch (Exception exception) {
                 status = 422;
                 comonResponse = new ComonResponse<>(6, "Error", errors); // своё сообщение об ошибке
             }
         } else {
             status = 400;
-            comonResponse = new ComonResponse<>(6, "Error", errors); // своё сообщение об ошибке
+            comonResponse = new ComonResponse<>(6, "Validation error", errors); // своё сообщение об ошибке
         }
 
         return new ResponseEntity<>(comonResponse, status);
     }
 
-    public ResponseEntity<ComonResponse<DeleteStudentResponse>> deleteStudentGroup(DeleteStudentRequest request) {
+    public ResponseEntity<ComonResponse<DeleteStudentResponse>> deleteStudent(DeleteStudentRequest request) {
         int status = 200;
         ComonResponse<DeleteStudentResponse> comonResponse;
 
@@ -67,15 +71,14 @@ public class ControllerStudent {
 
         if (errors.isEmpty()) {
             try {
-                DeleteStudentService service = new DeleteStudentService(request);
-                comonResponse = new ComonResponse<>(service.answer());
+                comonResponse = new ComonResponse<>(deleteStudentService.deleteStudent(request));
             } catch (Exception exception) {
                 status = 422;
                 comonResponse = new ComonResponse<>(6, "Error", errors); // своё сообщение об ошибке
             }
         } else {
             status = 400;
-            comonResponse = new ComonResponse<>(6, "Error", errors); // своё сообщение об ошибке
+            comonResponse = new ComonResponse<>(6, "Validation error", errors); // своё сообщение об ошибке
         }
 
         return new ResponseEntity<>(comonResponse, status);
@@ -89,21 +92,20 @@ public class ControllerStudent {
 
         if (errors.isEmpty()) {
             try {
-                GetStudentByIdService service = new GetStudentByIdService(request);
-                comonResponse = new ComonResponse<>(service.answer());
+                comonResponse = new ComonResponse<>(getStudentByIdService.getStudentById(request));
             } catch (Exception exception) {
                 status = 422;
                 comonResponse = new ComonResponse<>(6, "Error", errors); // своё сообщение об ошибке
             }
         } else {
             status = 400;
-            comonResponse = new ComonResponse<>(6, "Error", errors); // своё сообщение об ошибке
+            comonResponse = new ComonResponse<>(6, "Validation error", errors); // своё сообщение об ошибке
         }
 
         return new ResponseEntity<>(comonResponse, status);
     }
 
-    public ResponseEntity<ComonResponse<GetStudentByGroupResponse>> getStudentById(GetStudentByGroupRequest request) {
+    public ResponseEntity<ComonResponse<GetStudentByGroupResponse>> getStudentByGroup(GetStudentByGroupRequest request) {
         int status = 200;
         ComonResponse<GetStudentByGroupResponse> comonResponse;
 
@@ -111,15 +113,14 @@ public class ControllerStudent {
 
         if (errors.isEmpty()) {
             try {
-                GetStudentByGroupService service = new GetStudentByGroupService(request);
-                comonResponse = new ComonResponse<>(service.answer());
+                comonResponse = new ComonResponse<>(getStudentByGroupService.getStudentByGroup(request));
             } catch (Exception exception) {
                 status = 422;
                 comonResponse = new ComonResponse<>(6, "Error", errors); // своё сообщение об ошибке
             }
         } else {
             status = 400;
-            comonResponse = new ComonResponse<>(6, "Error", errors); // своё сообщение об ошибке
+            comonResponse = new ComonResponse<>(6, "Validation error", errors); // своё сообщение об ошибке
         }
 
         return new ResponseEntity<>(comonResponse, status);

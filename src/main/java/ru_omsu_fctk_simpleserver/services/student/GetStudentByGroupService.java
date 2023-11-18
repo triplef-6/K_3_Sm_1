@@ -1,6 +1,7 @@
-package ru_omsu_fctk_simpleserver.controllers.student;
+package ru_omsu_fctk_simpleserver.services.student;
 
-import ru_omsu_fctk_simpleserver.controllers.Service;
+import ru_omsu_fctk_simpleserver.exception.ServiceException;
+import ru_omsu_fctk_simpleserver.services.Service;
 import ru_omsu_fctk_simpleserver.essence.Student;
 import ru_omsu_fctk_simpleserver.repositories.RepositoryStudent;
 import ru_omsu_fctk_simpleserver.request.student.GetStudentByGroupRequest;
@@ -9,16 +10,11 @@ import ru_omsu_fctk_simpleserver.response.student.GetStudentByGroupResponse;
 import java.util.ArrayList;
 import java.util.List;
 
-public class GetStudentByGroupService implements Service<GetStudentByGroupResponse> {
-    private GetStudentByGroupRequest request;
+public class GetStudentByGroupService implements IGetStudentByGroupService {
     private RepositoryStudent repositoryStudent;
 
-    public GetStudentByGroupService(GetStudentByGroupRequest request) {
-        this.request = request;
-    }
-
     @Override
-    public GetStudentByGroupResponse answer() {
+    public GetStudentByGroupResponse getStudentByGroup(GetStudentByGroupRequest request) throws ServiceException {
         List<String> listName = new ArrayList<>();
         List<String> listSurname = new ArrayList<>();
         List<String> listPatronymic = new ArrayList<>();
