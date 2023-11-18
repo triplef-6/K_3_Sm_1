@@ -2,6 +2,7 @@ package ru_omsu_fctk_simpleserver.repositories;
 
 import ru_omsu_fctk_simpleserver.essence.Lesson;
 import ru_omsu_fctk_simpleserver.essence.VisitingLesson;
+import ru_omsu_fctk_simpleserver.exception.RepositoryException;
 
 import java.time.LocalDate;
 import java.util.List;
@@ -13,26 +14,26 @@ public interface IRepositoryLesson {
      * @param lesson занятие (с id == null)
      * @return id (!= null) добавленой занятия
      */
-    long addLesson(Lesson lesson);
+    long addLesson(Lesson lesson) throws RepositoryException;
 
     /**
      * изменение занятия
      * @param lesson занятие
      */
-    void editLesson(Lesson lesson);
+    void editLesson(Lesson lesson)throws RepositoryException;
 
     /**
      * удаление занятия
      * @param id id занятия
      */
-    void deleteLesson(long id);
+    void deleteLesson(long id) throws RepositoryException;
 
     /**
      * получение занятия по id (с данными о посещаемости)
      * @param id id занятия
      * @return список посещения занятия с занятием
      */
-    VisitingLesson GetLessonById(long id);
+    VisitingLesson GetLessonById(long id) throws RepositoryException;
 
     /**
      * получение списка занятий за период для группы (без информации о посещаемости)
@@ -41,7 +42,7 @@ public interface IRepositoryLesson {
      * @param endDate конечная дата
      * @return занятие
      */
-    List<Lesson> getLessonsByGroup(long idGroup, LocalDate startDate, LocalDate endDate);
+    List<Lesson> getLessonsByGroup(long idGroup, LocalDate startDate, LocalDate endDate) throws RepositoryException;
 
     /**
      * получение списка занятий за период для преподавателя (без информации о посещаемости)
@@ -50,7 +51,7 @@ public interface IRepositoryLesson {
      * @param endDate конечная дата
      * @return занятие
      */
-    List<Lesson> getLessonsByTeacher(long teacherId, LocalDate startDate, LocalDate endDate);
+    List<Lesson> getLessonsByTeacher(long teacherId, LocalDate startDate, LocalDate endDate) throws RepositoryException;
 
 
 
