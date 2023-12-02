@@ -2,18 +2,44 @@ package ru_omsu_fctk_simpleserver.repositories;
 
 import ru_omsu_fctk_simpleserver.essence.*;
 
+import java.util.HashMap;
 import java.util.Map;
 
 /**
  * заглушка для работы репозиториев
  */
 public class DataBase {
+    /*
+    добавть конструкторы
+    nextId
+     */
     private Map<Long, Student> studentMap;
+    private long maxStudentId;
     private Map<Long, Teacher> teacherMap;
     private Map<Long, Group> groupMap;
+    private long maxGroupId;
     private Map<Long, Subject> subjectMap;
     private Map<Long, Lesson> lessonMap;
-    private Map<Long, VisitingLesson> visitingLessonMap; // id занятия
+    private Map<Long, VisitingLesson> visitingLessonMap;
+
+    public DataBase() {
+        this.studentMap = new HashMap<>();
+        this.maxStudentId = 0;
+
+        this.groupMap = new HashMap<>();
+        this.maxGroupId = 0;
+    }
+    public long nextStudentId() {
+        long idRet = maxStudentId;
+        this.maxStudentId++;
+        return idRet;
+    }
+
+    public long nextGroupId() {
+        long idRet = maxGroupId;
+        this.maxGroupId++;
+        return idRet;
+    }
 
     public Map<Long, Student> getStudentMap() {
         return studentMap;
@@ -38,4 +64,5 @@ public class DataBase {
     public Map<Long, VisitingLesson> getVisitingLessonMap() {
         return visitingLessonMap;
     }
+
 }
