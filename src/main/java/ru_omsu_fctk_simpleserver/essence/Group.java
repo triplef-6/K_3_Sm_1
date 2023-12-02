@@ -33,6 +33,10 @@ public class Group {
         this.name = name;
     }
 
+    public void set(Group group) {
+        setName(group.getName());
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;

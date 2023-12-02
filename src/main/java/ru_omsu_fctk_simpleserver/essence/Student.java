@@ -77,6 +77,14 @@ public class Student {
         this.status = status;
     }
 
+    public void set(Student student) {
+        setStatus(student.getStatus());
+        setPatronymic(student.getPatronymic());
+        setName(student.getName());
+        setSurname(student.getSurname());
+        setGroupId(student.getGroupId());
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
