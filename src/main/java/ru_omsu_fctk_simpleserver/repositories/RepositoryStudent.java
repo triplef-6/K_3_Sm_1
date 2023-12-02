@@ -14,18 +14,19 @@ public class RepositoryStudent implements IRepositoryStudent {
 
     @Override
     public long addStudent(Student student) {
-        System.out.println("Добавлено(типа)");
-        return 6;
+        long studentId = base.nextStudentId();
+        base.getStudentMap().put(studentId, student);
+        return studentId;
     }
 
     @Override
     public void editStudent(Student student) {
-        System.out.println("Изменино(типа)");
+        base.getStudentMap().get(student.getId()).set(student);
     }
 
     @Override
     public void deleteStudent(long id) {
-        System.out.println("Удалено(типа)");
+        base.getStudentMap().remove(id);
     }
 
     @Override
