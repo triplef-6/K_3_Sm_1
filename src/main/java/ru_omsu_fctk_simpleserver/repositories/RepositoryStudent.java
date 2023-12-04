@@ -6,9 +6,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
-/**
- * заглушка
- */
+
 public class RepositoryStudent implements IRepositoryStudent {
     private DataBase base;
 

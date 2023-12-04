@@ -9,10 +9,6 @@ import java.util.Map;
  * заглушка для работы репозиториев
  */
 public class DataBase {
-    /*
-    добавть конструкторы
-    nextId
-     */
     private Map<Long, Student> studentMap;
     private long maxStudentId;
     private Map<Long, Teacher> teacherMap;
