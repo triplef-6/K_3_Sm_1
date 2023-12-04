@@ -21,6 +21,17 @@ public class ControllerGroup {
     private DeleteStudentGroupValidator deleteStudentGroupValidator;
     private GetStudentGroupByIdValidator getStudentGroupByIdValidator;
 
+    public ControllerGroup(AddStudentGroupsService addStudentGroupsService,
+                           DeleteStudentGroupService deleteStudentGroupService,
+                           EditStudentGroupsService editStudentGroupsService,
+                           GetStudentGroupsService getStudentGroupsService,
+                           GetStudentGroupByIdService getStudentGroupByIdService) {
+        this.editStudentGroupsService = editStudentGroupsService;
+        this.deleteStudentGroupService = deleteStudentGroupService;
+        this.addStudentGroupsService = addStudentGroupsService;
+        this.getStudentGroupByIdService = getStudentGroupByIdService;
+        this.getStudentGroupsService = getStudentGroupsService;
+    }
     public ResponseEntity<ComonResponse<AddStudentGroupsResponse>> addStudentGroups(AddStudentGroupsRequest request) {
         int status = 200;
         ComonResponse<AddStudentGroupsResponse> comonResponse;
