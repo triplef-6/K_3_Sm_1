@@ -11,6 +11,10 @@ import java.util.List;
 public class GetStudentGroupsService implements IGetStudentGroupsService {
     private RepositoryGroup repositoryGroup;
 
+    public GetStudentGroupsService(RepositoryGroup repositoryGroup) {
+        this.repositoryGroup = repositoryGroup;
+    }
+
     @Override
     public GetStudentGroupsResponse getStudentGroups(GetStudentGroupsRequest request) {
         List<String> groups = new ArrayList<>();

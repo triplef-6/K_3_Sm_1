@@ -10,6 +10,10 @@ import ru_omsu_fctk_simpleserver.response.student.AddStudentResponse;
 public class AddStudentService implements IAddStudentService {
     private RepositoryStudent repositoryStudent;
 
+    public AddStudentService(RepositoryStudent repositoryStudent) {
+        this.repositoryStudent = repositoryStudent;
+    }
+
     @Override
     public AddStudentResponse addStudent(AddStudentRequest request) {
         return new AddStudentResponse(repositoryStudent.addStudent(new Student(Long.parseLong(request.getGroupId()),

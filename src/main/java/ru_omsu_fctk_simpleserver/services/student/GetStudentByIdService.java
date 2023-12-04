@@ -10,6 +10,10 @@ import ru_omsu_fctk_simpleserver.response.student.GetStudentByIdResponse;
 public class GetStudentByIdService implements IGetStudentByIdService {
     private RepositoryStudent repositoryStudent;
 
+    public GetStudentByIdService(RepositoryStudent repositoryStudent) {
+        this.repositoryStudent = repositoryStudent;
+    }
+
     @Override
     public GetStudentByIdResponse getStudentById(GetStudentByIdRequest request) throws ServiceException {
         Student student = repositoryStudent.getStudentById(request.getId());

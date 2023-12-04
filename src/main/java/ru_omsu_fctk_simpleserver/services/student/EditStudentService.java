@@ -9,6 +9,10 @@ import ru_omsu_fctk_simpleserver.response.student.EditStudentResponse;
 public class EditStudentService implements IEditStudentService {
     private RepositoryStudent repositoryStudent;
 
+    public EditStudentService(RepositoryStudent repositoryStudent) {
+        this.repositoryStudent = repositoryStudent;
+    }
+
     @Override
     public EditStudentResponse editStudent(EditStudentRequest request) throws ServiceException {
         return new EditStudentResponse();

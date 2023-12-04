@@ -7,6 +7,10 @@ import ru_omsu_fctk_simpleserver.response.group.EditStudentGroupsResponse;
 public class EditStudentGroupsService implements IEditStudentGroupsService {
     private RepositoryGroup repositoryGroup;
 
+    public EditStudentGroupsService(RepositoryGroup repositoryGroup) {
+        this.repositoryGroup = repositoryGroup;
+    }
+
     @Override
     public EditStudentGroupsResponse editStudentGroups(EditStudentGroupsRequest request) {
         return new EditStudentGroupsResponse();

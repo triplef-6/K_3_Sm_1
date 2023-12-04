@@ -8,6 +8,10 @@ public class DeleteStudentGroupService implements IDeleteStudentGroupService {
 
     private RepositoryGroup repositoryGroup;
 
+    public DeleteStudentGroupService(RepositoryGroup repositoryGroup) {
+        this.repositoryGroup = repositoryGroup;
+    }
+
     @Override
     public DeleteStudentGroupResponse deleteStudentGroup(DeleteStudentGroupRequest request) {
         return new DeleteStudentGroupResponse();

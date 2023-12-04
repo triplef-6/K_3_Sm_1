@@ -9,6 +9,10 @@ import ru_omsu_fctk_simpleserver.response.group.AddStudentGroupsResponse;
 public class AddStudentGroupsService implements IAddStudentGroupsService {
     private RepositoryGroup repositoryGroup;
 
+    public AddStudentGroupsService(RepositoryGroup repositoryGroup) {
+        this.repositoryGroup = repositoryGroup;
+    }
+
     @Override
     public AddStudentGroupsResponse addStudentGroups(AddStudentGroupsRequest request) throws ServiceException {
 //        try {

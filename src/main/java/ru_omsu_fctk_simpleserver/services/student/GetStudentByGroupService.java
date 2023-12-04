@@ -13,6 +13,10 @@ import java.util.List;
 public class GetStudentByGroupService implements IGetStudentByGroupService {
     private RepositoryStudent repositoryStudent;
 
+    public GetStudentByGroupService(RepositoryStudent repositoryStudent) {
+        this.repositoryStudent = repositoryStudent;
+    }
+
     @Override
     public GetStudentByGroupResponse getStudentByGroup(GetStudentByGroupRequest request) throws ServiceException {
         List<String> listName = new ArrayList<>();
