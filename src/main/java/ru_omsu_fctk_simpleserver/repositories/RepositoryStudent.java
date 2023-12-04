@@ -10,6 +10,10 @@ import java.util.Map;
 public class RepositoryStudent implements IRepositoryStudent {
     private DataBase base;
 
+    public RepositoryStudent(DataBase base) {
+        this.base = base;
+    }
+
     @Override
     public long addStudent(Student student) {
         long studentId = base.nextStudentId();

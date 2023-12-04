@@ -7,6 +7,10 @@ import java.util.List;
 public class RepositoryGroup implements IRepositoryGroup {
     private DataBase base;
 
+    public RepositoryGroup(DataBase base) {
+        this.base = base;
+    }
+
     @Override
     public long addStudentGroup(Group group) {
         long groupId = base.nextGroupId();
