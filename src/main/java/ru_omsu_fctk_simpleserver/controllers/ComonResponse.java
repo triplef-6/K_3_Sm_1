@@ -3,11 +3,11 @@ package ru_omsu_fctk_simpleserver.controllers;
 import java.util.List;
 
 public class ComonResponse<T> {
-    private T data;
-    private boolean ok;
-    private Integer codeError;
-    private String messageError;
-    private List<String> details;
+    private final T data;
+    private final boolean ok;
+    private final Integer codeError;
+    private final String messageError;
+    private final List<String> details;
 
     public ComonResponse(T data) {
         this.data = data;

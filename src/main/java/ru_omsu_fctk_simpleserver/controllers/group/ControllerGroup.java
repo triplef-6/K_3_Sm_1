@@ -11,15 +11,15 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class ControllerGroup {
-    private AddStudentGroupsService addStudentGroupsService;
-    private DeleteStudentGroupService deleteStudentGroupService;
-    private EditStudentGroupsService editStudentGroupsService;
-    private GetStudentGroupsService getStudentGroupsService;
-    private GetStudentGroupByIdService getStudentGroupByIdService;
-    private AddStudentGroupsValidator addStudentGroupsValidator;
-    private EditStudentGroupsValidator editStudentGroupsValidator;
-    private DeleteStudentGroupValidator deleteStudentGroupValidator;
-    private GetStudentGroupByIdValidator getStudentGroupByIdValidator;
+    private final AddStudentGroupsService addStudentGroupsService;
+    private final DeleteStudentGroupService deleteStudentGroupService;
+    private final EditStudentGroupsService editStudentGroupsService;
+    private final GetStudentGroupsService getStudentGroupsService;
+    private final GetStudentGroupByIdService getStudentGroupByIdService;
+    private final AddStudentGroupsValidator addStudentGroupsValidator;
+    private final EditStudentGroupsValidator editStudentGroupsValidator;
+    private final DeleteStudentGroupValidator deleteStudentGroupValidator;
+    private final GetStudentGroupByIdValidator getStudentGroupByIdValidator;
 
     public ControllerGroup(AddStudentGroupsService addStudentGroupsService,
                            DeleteStudentGroupService deleteStudentGroupService,
