@@ -80,7 +80,7 @@ public class Server {
         endpointMap.put("addStudentGroups", new AddStudentGroupsHandler(controllerGroup));
         endpointMap.put("getStudentGroups", new GetStudentGroupsHandler(controllerGroup));
         endpointMap.put("deleteStudentGroup", new DeleteStudentGroupHandler(controllerGroup));
-        endpointMap.put("editStudentGroups", new EditStudentGroupsHandler(controllerGroup));
+        endpointMap.put("editStudentGroups", new GetStudentGroupsHandler(controllerGroup));
         endpointMap.put("getStudentGroupById", new GetStudentGroupByIdHandler(controllerGroup));
 
         endpointMap.put("addStudent", new AddStudentHandler(controllerStudent));
@@ -100,7 +100,7 @@ public class Server {
         }
         try {
             return new Writer(endpointMap.get(reader.getEndpoint()).handel(reader.getJson()));
-        } catch (Exception e){
+        } catch (Exception e) {
             throw new ServerException(e.getMessage());
         }
     }
