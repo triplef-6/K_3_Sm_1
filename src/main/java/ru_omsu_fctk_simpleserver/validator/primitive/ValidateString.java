@@ -6,6 +6,9 @@ import java.util.List;
  * Валидатор строк
  */
 public class ValidateString {
+    public ValidateString() {
+    }
+
     public boolean validateStringNotEmpty(String str, List<String> errors, String fieldName, String errorMessage) {
         if (str.equals("")) {
             errors.add(fieldName + ": " + errorMessage);

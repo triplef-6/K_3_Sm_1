@@ -10,6 +10,10 @@ import java.util.List;
 public class DeleteStudentValidator implements Validator<DeleteStudentRequest> {
     private ValidatorId validatorId;
 
+    public DeleteStudentValidator(ValidatorId validatorId) {
+        this.validatorId = validatorId;
+    }
+
     @Override
     public List<String> validator(DeleteStudentRequest request) {
         List<String> errors = new ArrayList<>();

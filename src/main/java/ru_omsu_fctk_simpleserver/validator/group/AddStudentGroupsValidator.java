@@ -10,6 +10,10 @@ import java.util.List;
 public class AddStudentGroupsValidator implements Validator<AddStudentGroupsRequest> {
     private ValidateString validateString;
 
+    public AddStudentGroupsValidator(ValidateString validateString) {
+        this.validateString = validateString;
+    }
+
     @Override
     public List<String> validator(AddStudentGroupsRequest request) {
 

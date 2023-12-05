@@ -12,6 +12,11 @@ public class EditStudentGroupsValidator implements Validator<EditStudentGroupsRe
     private ValidateString validateString;
     private ValidatorId validatorId;
 
+    public EditStudentGroupsValidator(ValidateString validateString, ValidatorId validatorId) {
+        this.validateString = validateString;
+        this.validatorId = validatorId;
+    }
+
     @Override
     public List<String> validator(EditStudentGroupsRequest request) {
         List<String> errors = new ArrayList<>();
