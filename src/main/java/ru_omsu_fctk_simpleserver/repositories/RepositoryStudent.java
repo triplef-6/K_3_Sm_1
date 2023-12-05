@@ -16,6 +16,9 @@ public class RepositoryStudent implements IRepositoryStudent {
 
     @Override
     public long addStudent(Student student) {
+        if (!base.getGroupMap().containsKey(student.getGroupId())) {
+            throw new RuntimeException("Нет объекта с данным id");
+        }
         long studentId = base.nextStudentId();
         base.getStudentMap().put(studentId, student);
         return studentId;
@@ -23,7 +26,7 @@ public class RepositoryStudent implements IRepositoryStudent {
 
     @Override
     public void editStudent(Student student) {
-        if (!base.getStudentMap().containsKey(student.getId())) {
+        if (!base.getStudentMap().containsKey(student.getId()) || !base.getGroupMap().containsKey(student.getGroupId())) {
             throw new RuntimeException("Нет объекта с данным id");
         }
         base.getStudentMap().get(student.getId()).set(student);
