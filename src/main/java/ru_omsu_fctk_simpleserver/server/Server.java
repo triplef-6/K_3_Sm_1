@@ -11,6 +11,10 @@ import ru_omsu_fctk_simpleserver.server.handlers.group.*;
 import ru_omsu_fctk_simpleserver.server.handlers.student.*;
 import ru_omsu_fctk_simpleserver.services.group.*;
 import ru_omsu_fctk_simpleserver.services.student.*;
+import ru_omsu_fctk_simpleserver.validator.group.*;
+import ru_omsu_fctk_simpleserver.validator.primitive.ValidateString;
+import ru_omsu_fctk_simpleserver.validator.primitive.ValidatorId;
+import ru_omsu_fctk_simpleserver.validator.student.*;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -24,6 +28,20 @@ public class Server {
         DataBase dataBase = new DataBase();
         RepositoryGroup repositoryGroup = new RepositoryGroup(dataBase);
         RepositoryStudent repositoryStudent = new RepositoryStudent(dataBase);
+
+        ValidatorId validatorId = new ValidatorId();
+        ValidateString validateString = new ValidateString();
+
+        AddStudentGroupsValidator addStudentGroupsValidator = new AddStudentGroupsValidator(validateString);
+        DeleteStudentGroupValidator deleteStudentGroupValidator = new DeleteStudentGroupValidator(validatorId);
+        EditStudentGroupsValidator editStudentGroupsValidator = new EditStudentGroupsValidator(validateString, validatorId);
+        GetStudentGroupByIdValidator getStudentGroupByIdValidator = new GetStudentGroupByIdValidator(validatorId);
+
+        AddStudentValidator addStudentValidator = new AddStudentValidator(validateString, validatorId);
+        DeleteStudentValidator deleteStudentValidator = new DeleteStudentValidator(validatorId);
+        EditStudentValidator editStudentValidator = new EditStudentValidator(validateString, validatorId);
+        GetStudentByGroupValidator getStudentByGroupValidator = new GetStudentByGroupValidator(validatorId);
+        GetStudentByIdValidator getStudentByIdValidator = new GetStudentByIdValidator(validatorId);
 
         AddStudentGroupsService addStudentGroupsService = new AddStudentGroupsService(repositoryGroup);
         DeleteStudentGroupService deleteStudentGroupService = new DeleteStudentGroupService(repositoryGroup);
@@ -41,12 +59,21 @@ public class Server {
                 deleteStudentGroupService,
                 editStudentGroupsService,
                 getStudentGroupsService,
-                getStudentGroupByIdService);
+                getStudentGroupByIdService,
+                addStudentGroupsValidator,
+                editStudentGroupsValidator,
+                deleteStudentGroupValidator,
+                getStudentGroupByIdValidator);
         controllerStudent = new ControllerStudent(addStudentService,
                 editStudentService,
                 deleteStudentService,
                 getStudentByIdService,
-                getStudentByGroupService);
+                getStudentByGroupService,
+                addStudentValidator,
+                editStudentValidator,
+                deleteStudentValidator,
+                getStudentByIdValidator,
+                getStudentByGroupValidator);
 
         endpointMap = new HashMap<>();
 
@@ -64,11 +91,11 @@ public class Server {
     }
 
     public Server() {
-        System.out.println("Сервер работаес только со Студентами и ГруппамиСтудентов");
+        System.out.println("Сервер работае только со Студентами и ГруппамиСтудентов");
     }
 
     public Writer executeRequest(Reader reader) throws ServerException {
-        if (endpointMap.containsKey(reader.getEndpoint())) {
+        if (!endpointMap.containsKey(reader.getEndpoint())) {
             throw new ServerException("Неправельный запрос");
         }
         try {
