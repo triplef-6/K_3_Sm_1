@@ -24,4 +24,8 @@ public class ComonResponse<T> {
         this.messageError = messageError;
         this.details = details;
     }
+
+    public T getData() {
+        return data;
+    }
 }
