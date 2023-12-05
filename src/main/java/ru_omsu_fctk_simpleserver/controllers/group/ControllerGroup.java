@@ -104,7 +104,7 @@ public class ControllerGroup {
         return new ResponseEntity<>(comonResponse, status);
     }
 
-    public ResponseEntity<ComonResponse<GetStudentGroupByIdResponse>> getStudentGroupByIdGroup(GetStudentGroupByIdRequest request) {
+    public ResponseEntity<ComonResponse<GetStudentGroupByIdResponse>> getStudentGroupById(GetStudentGroupByIdRequest request) {
         int status = 200;
         ComonResponse<GetStudentGroupByIdResponse> comonResponse;
 
