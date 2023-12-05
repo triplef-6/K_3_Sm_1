@@ -14,13 +14,7 @@ public class AddStudentGroupsService implements IAddStudentGroupsService {
     }
 
     @Override
-    public AddStudentGroupsResponse addStudentGroups(AddStudentGroupsRequest request) throws ServiceException {
-//        try {
-//            AddStudentGroupsResponse response = new AddStudentGroupsResponse(repositoryGroup.addStudentGroup(new Group(request.getName())));
-//        } catch (Exception exception) {
-//            throw ServiceException("Repository error");
-//        }
-//        return response;
+    public AddStudentGroupsResponse addStudentGroups(AddStudentGroupsRequest request) {
         return new AddStudentGroupsResponse(repositoryGroup.addStudentGroup(new Group(request.getName())));
     }
 }
