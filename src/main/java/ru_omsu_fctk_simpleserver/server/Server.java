@@ -64,6 +64,7 @@ public class Server {
     }
 
     public Server() {
+        System.out.println("Сервер работаес только со Студентами и ГруппамиСтудентов");
     }
 
     public Writer executeRequest(Reader reader) throws ServerException {
