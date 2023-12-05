@@ -28,4 +28,20 @@ public class ComonResponse<T> {
     public T getData() {
         return data;
     }
+
+    public boolean isOk() {
+        return ok;
+    }
+
+    public Integer getCodeError() {
+        return codeError;
+    }
+
+    public String getMessageError() {
+        return messageError;
+    }
+
+    public List<String> getDetails() {
+        return details;
+    }
 }
