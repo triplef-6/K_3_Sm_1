@@ -10,7 +10,7 @@ public class Reader {
     private String json;
 
     public Reader(String request) throws ReaderException {
-        String[] str = request.split(": ");
+        String[] str = request.split("::");
         if (str.length != 2) {
             throw new ReaderException("Некоректный запрос");
         }
