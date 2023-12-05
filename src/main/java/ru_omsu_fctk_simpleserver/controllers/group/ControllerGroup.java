@@ -73,7 +73,7 @@ public class ControllerGroup {
                 comonResponse = new ComonResponse<>(editStudentGroupsService.editStudentGroups(request));
             } catch (Exception exception) {
                 status = 422;
-                comonResponse = new ComonResponse<>(6, "Error", errors); // своё сообщение об ошибке
+                comonResponse = new ComonResponse<>(6, exception.getMessage(), errors); // своё сообщение об ошибке
             }
         } else {
             status = 400;
@@ -94,7 +94,7 @@ public class ControllerGroup {
                 comonResponse = new ComonResponse<>(deleteStudentGroupService.deleteStudentGroup(request));
             } catch (Exception exception) {
                 status = 422;
-                comonResponse = new ComonResponse<>(6, "Error", errors); // своё сообщение об ошибке
+                comonResponse = new ComonResponse<>(6, exception.getMessage(), errors); // своё сообщение об ошибке
             }
         } else {
             status = 400;
@@ -115,7 +115,7 @@ public class ControllerGroup {
                 comonResponse = new ComonResponse<>(getStudentGroupByIdService.getStudentGroupById(request));
             } catch (Exception exception) {
                 status = 422;
-                comonResponse = new ComonResponse<>(6, "Error", errors); // своё сообщение об ошибке
+                comonResponse = new ComonResponse<>(6, exception.getMessage(), errors); // своё сообщение об ошибке
             }
         } else {
             status = 400;

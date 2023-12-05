@@ -54,7 +54,7 @@ public class ControllerStudent {
                 comonResponse = new ComonResponse<>(addStudentService.addStudent(request));
             } catch (Exception exception) {
                 status = 422;
-                comonResponse = new ComonResponse<>(6, "Error", errors); // своё сообщение об ошибке
+                comonResponse = new ComonResponse<>(6, exception.getMessage(), errors); // своё сообщение об ошибке
             }
         } else {
             status = 400;
@@ -75,7 +75,7 @@ public class ControllerStudent {
                 comonResponse = new ComonResponse<>(editStudentService.editStudent(request));
             } catch (Exception exception) {
                 status = 422;
-                comonResponse = new ComonResponse<>(6, "Error", errors); // своё сообщение об ошибке
+                comonResponse = new ComonResponse<>(6, exception.getMessage(), errors); // своё сообщение об ошибке
             }
         } else {
             status = 400;
@@ -96,7 +96,7 @@ public class ControllerStudent {
                 comonResponse = new ComonResponse<>(deleteStudentService.deleteStudent(request));
             } catch (Exception exception) {
                 status = 422;
-                comonResponse = new ComonResponse<>(6, "Error", errors); // своё сообщение об ошибке
+                comonResponse = new ComonResponse<>(6, exception.getMessage(), errors); // своё сообщение об ошибке
             }
         } else {
             status = 400;
@@ -117,7 +117,7 @@ public class ControllerStudent {
                 comonResponse = new ComonResponse<>(getStudentByIdService.getStudentById(request));
             } catch (Exception exception) {
                 status = 422;
-                comonResponse = new ComonResponse<>(6, "Error", errors); // своё сообщение об ошибке
+                comonResponse = new ComonResponse<>(6, exception.getMessage(), errors); // своё сообщение об ошибке
             }
         } else {
             status = 400;
@@ -138,7 +138,7 @@ public class ControllerStudent {
                 comonResponse = new ComonResponse<>(getStudentByGroupService.getStudentByGroup(request));
             } catch (Exception exception) {
                 status = 422;
-                comonResponse = new ComonResponse<>(6, "Error", errors); // своё сообщение об ошибке
+                comonResponse = new ComonResponse<>(6, exception.getMessage(), errors); // своё сообщение об ошибке
             }
         } else {
             status = 400;
