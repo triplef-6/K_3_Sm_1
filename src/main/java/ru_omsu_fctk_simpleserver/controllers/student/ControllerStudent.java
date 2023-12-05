@@ -25,12 +25,22 @@ public class ControllerStudent {
                              EditStudentService editStudentService,
                              DeleteStudentService deleteStudentService,
                              GetStudentByIdService getStudentByIdService,
-                             GetStudentByGroupService getStudentByGroupService) {
+                             GetStudentByGroupService getStudentByGroupService,
+                             AddStudentValidator addStudentValidator,
+                             EditStudentValidator editStudentValidator,
+                             DeleteStudentValidator deleteStudentValidator,
+                             GetStudentByIdValidator getStudentByIdValidator,
+                             GetStudentByGroupValidator getStudentByGroupValidator) {
         this.addStudentService = addStudentService;
         this.editStudentService = editStudentService;
         this.deleteStudentService = deleteStudentService;
         this.getStudentByIdService = getStudentByIdService;
         this.getStudentByGroupService = getStudentByGroupService;
+        this.addStudentValidator = addStudentValidator;
+        this.editStudentValidator = editStudentValidator;
+        this.deleteStudentValidator = deleteStudentValidator;
+        this.getStudentByIdValidator = getStudentByIdValidator;
+        this.getStudentByGroupValidator = getStudentByGroupValidator;
     }
 
     public ResponseEntity<ComonResponse<AddStudentResponse>> addStudent(AddStudentRequest request) {
