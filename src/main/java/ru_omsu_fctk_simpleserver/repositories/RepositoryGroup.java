@@ -20,16 +20,25 @@ public class RepositoryGroup implements IRepositoryGroup {
 
     @Override
     public void editStudentGroup(Group group) {
+        if (!base.getGroupMap().containsKey(group.getId())) {
+            throw new RuntimeException("Нет объекта с данным id");
+        }
         base.getGroupMap().get(group.getId()).set(group);
     }
 
     @Override
     public void deleteStudentGroup(long id) {
+        if (!base.getGroupMap().containsKey(id)) {
+            throw new RuntimeException("Нет объекта с данным id");
+        }
         base.getGroupMap().remove(id);
     }
 
     @Override
     public Group getStudentGroupById(long id) {
+        if (!base.getGroupMap().containsKey(id)) {
+            throw new RuntimeException("Нет объекта с данным id");
+        }
         return base.getGroupMap().get(id);
     }
 
