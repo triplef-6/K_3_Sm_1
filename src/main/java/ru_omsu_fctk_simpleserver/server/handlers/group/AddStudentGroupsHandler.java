@@ -1,6 +1,12 @@
 package ru_omsu_fctk_simpleserver.server.handlers.group;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
+import ru_omsu_fctk_simpleserver.controllers.ComonResponse;
+import ru_omsu_fctk_simpleserver.controllers.ResponseEntity;
 import ru_omsu_fctk_simpleserver.controllers.group.ControllerGroup;
+import ru_omsu_fctk_simpleserver.exception.HandleException;
+import ru_omsu_fctk_simpleserver.request.group.AddStudentGroupsRequest;
+import ru_omsu_fctk_simpleserver.response.group.AddStudentGroupsResponse;
 import ru_omsu_fctk_simpleserver.server.handlers.EndpointHandler;
 
 public class AddStudentGroupsHandler implements EndpointHandler {
@@ -11,8 +17,17 @@ public class AddStudentGroupsHandler implements EndpointHandler {
     }
 
     @Override
-    public String handel(String json) {
-        return null;
+    public String handel(String json) throws HandleException {
+        ObjectMapper mapper = new ObjectMapper();
+        try {
+            AddStudentGroupsRequest request = mapper.readValue(json, AddStudentGroupsRequest.class);
+            ResponseEntity<ComonResponse<AddStudentGroupsResponse>> res = controllerGroup.addStudentGroups(request);
+            ComonResponse<AddStudentGroupsResponse> comonResponse = res.getAnswer();
+            AddStudentGroupsResponse response = comonResponse.getData();
+            return mapper.writeValueAsString(response);
+        } catch (Exception e) {
+            throw new HandleException(e.getMessage());
+        }
     }
 }
 
