@@ -22,9 +22,17 @@ public class AddStudentGroupsHandler implements EndpointHandler {
         try {
             AddStudentGroupsRequest request = mapper.readValue(json, AddStudentGroupsRequest.class);
             ResponseEntity<ComonResponse<AddStudentGroupsResponse>> res = controllerGroup.addStudentGroups(request);
+
             ComonResponse<AddStudentGroupsResponse> comonResponse = res.getAnswer();
-            AddStudentGroupsResponse response = comonResponse.getData();
-            return mapper.writeValueAsString(response);
+            if (comonResponse.isOk()) {
+                return mapper.writeValueAsString(res.getStatus()) + "::"
+                        + mapper.writeValueAsString(comonResponse.getData());
+            } else {
+                return mapper.writeValueAsString(res.getStatus()) + "::"
+                        + mapper.writeValueAsString(comonResponse.getCodeError()) + ":"
+                        + mapper.writeValueAsString(comonResponse.getMessageError()) + ":"
+                        + mapper.writeValueAsString(comonResponse.getDetails());
+            }
         } catch (Exception e) {
             throw new HandleException(e.getMessage());
         }
