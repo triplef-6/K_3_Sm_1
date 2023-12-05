@@ -20,10 +20,10 @@ public class DataBase {
 
     public DataBase() {
         this.studentMap = new HashMap<>();
-        this.maxStudentId = 0;
+        this.maxStudentId = 1;
 
         this.groupMap = new HashMap<>();
-        this.maxGroupId = 0;
+        this.maxGroupId = 1;
     }
     public long nextStudentId() {
         long idRet = maxStudentId;
