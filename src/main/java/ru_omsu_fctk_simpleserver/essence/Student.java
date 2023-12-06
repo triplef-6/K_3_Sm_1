@@ -21,7 +21,7 @@ public class Student {
         this.status = status;
     }
 
-    public Student(long groupId, String surname, String name, String patronymic) {
+    public Student(long groupId, String surname, String name, String patronymic, String status) {
         this.groupId = groupId;
         this.surname = surname;
         this.name = name;
