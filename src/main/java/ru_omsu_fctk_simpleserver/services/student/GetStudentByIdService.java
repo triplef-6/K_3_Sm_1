@@ -15,8 +15,8 @@ public class GetStudentByIdService implements IGetStudentByIdService {
     }
 
     @Override
-    public GetStudentByIdResponse getStudentById(GetStudentByIdRequest request) throws ServiceException {
+    public GetStudentByIdResponse getStudentById(GetStudentByIdRequest request) {
         Student student = repositoryStudent.getStudentById(request.getId());
-        return new GetStudentByIdResponse(student.getName(), student.getSurname(), student.getPatronymic(), student.getStatus());
+        return new GetStudentByIdResponse(student.getGroupId(), student.getName(), student.getSurname(), student.getPatronymic(), student.getStatus());
     }
 }

@@ -4,6 +4,7 @@ package ru_omsu_fctk_simpleserver.response.student;
  * получение студента по id
  */
 public class GetStudentByIdResponse {
+    private Long groupId;
     private String surname;
     private String name;
     private String patronymic;
@@ -11,11 +12,12 @@ public class GetStudentByIdResponse {
 
     public GetStudentByIdResponse() {}
 
-    public  GetStudentByIdResponse(String name, String surname, String patronymic, String status) {
-
+    public  GetStudentByIdResponse(Long groupId, String name, String surname, String patronymic, String status) {
+        this.groupId = groupId;
         this.name = name;
         this.patronymic = patronymic;
         this.surname = surname;
+        this.status = status;
     }
 
     public String getName() {
@@ -48,5 +50,13 @@ public class GetStudentByIdResponse {
 
     public void setStatus(String status) {
         this.status = status;
+    }
+
+    public Long getGroupId() {
+        return groupId;
+    }
+
+    public void setGroupId(Long groupId) {
+        this.groupId = groupId;
     }
 }
