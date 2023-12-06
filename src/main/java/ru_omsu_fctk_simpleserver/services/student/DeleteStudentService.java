@@ -15,6 +15,7 @@ public class DeleteStudentService implements IDeleteStudentService {
 
     @Override
     public DeleteStudentResponse deleteStudent(DeleteStudentRequest request) throws ServiceException {
+        repositoryStudent.deleteStudent(request.getId());
         return new DeleteStudentResponse();
     }
 }
