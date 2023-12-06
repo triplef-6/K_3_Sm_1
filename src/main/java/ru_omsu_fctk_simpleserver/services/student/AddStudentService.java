@@ -17,6 +17,6 @@ public class AddStudentService implements IAddStudentService {
     @Override
     public AddStudentResponse addStudent(AddStudentRequest request) {
         return new AddStudentResponse(repositoryStudent.addStudent(new Student(Long.parseLong(request.getGroupId()),
-                request.getSurname(), request.getName(), request.getStatus())));
+                request.getSurname(), request.getName(),request.getPatronymic(), request.getStatus())));
     }
 }
