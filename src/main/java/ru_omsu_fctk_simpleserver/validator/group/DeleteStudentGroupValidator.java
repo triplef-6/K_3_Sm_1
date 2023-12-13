@@ -18,7 +18,7 @@ public class DeleteStudentGroupValidator implements Validator<DeleteStudentGroup
     public List<String> validator(DeleteStudentGroupRequest request) {
         List<String> errors = new ArrayList<>();
 
-        validatorId.validateIdNotZero(request.getId(), errors, "Id", "zero");
+        validatorId.validateIdNotZero(request.getId(), errors, "id", "zero");
 
         return errors;
     }
