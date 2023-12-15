@@ -4,15 +4,15 @@ package ru_omsu_fctk_simpleserver.request.student;
  * получение студентов по id группы
  */
 public class GetStudentByGroupRequest {
-    private long id;
+    private long groupId;
 
     public GetStudentByGroupRequest() {}
 
     public GetStudentByGroupRequest(long id) {
-        this.id = id;
+        this.groupId = id;
     }
 
-    public Long getId() {
-        return id;
+    public Long getGroupId() {
+        return groupId;
     }
 }

@@ -18,7 +18,7 @@ public class GetStudentByGroupValidator implements Validator<GetStudentByGroupRe
     public List<String> validator(GetStudentByGroupRequest request) {
         List<String> errors = new ArrayList<>();
 
-        validatorId.validateIdNotZero(request.getId(), errors, "id", "zero");
+        validatorId.validateIdNotZero(request.getGroupId(), errors, "groupId", "zero");
 
         return errors;
     }

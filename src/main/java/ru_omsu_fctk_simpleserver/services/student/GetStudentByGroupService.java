@@ -1,7 +1,6 @@
 package ru_omsu_fctk_simpleserver.services.student;
 
 import ru_omsu_fctk_simpleserver.exception.ServiceException;
-import ru_omsu_fctk_simpleserver.services.Service;
 import ru_omsu_fctk_simpleserver.essence.Student;
 import ru_omsu_fctk_simpleserver.repositories.RepositoryStudent;
 import ru_omsu_fctk_simpleserver.request.student.GetStudentByGroupRequest;
@@ -24,7 +23,7 @@ public class GetStudentByGroupService implements IGetStudentByGroupService {
         List<String> listPatronymic = new ArrayList<>();
         List<String> listStatus = new ArrayList<>();
 
-        for (Student student : repositoryStudent.getStudentByGroup(request.getId())) {
+        for (Student student : repositoryStudent.getStudentByGroup(request.getGroupId())) {
             listName.add(student.getName());
             listSurname.add(student.getSurname());
             listPatronymic.add(student.getPatronymic());
