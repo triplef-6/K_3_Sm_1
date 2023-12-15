@@ -51,7 +51,7 @@ public class ControllerGroup {
                 comonResponse = new ComonResponse<>(addStudentGroupsService.addStudentGroups(request));
             } catch (Exception exception) {
                 status = 422;
-                comonResponse = new ComonResponse<>(6, "Error", errors);
+                comonResponse = new ComonResponse<>(6, exception.getMessage(), errors);
             }
         } else {
             status = 400;
