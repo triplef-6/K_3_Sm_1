@@ -4,7 +4,7 @@ package ru_omsu_fctk_simpleserver.request.student;
  * редактирование студента
  */
 public class EditStudentRequest {
-    private Long id;
+    private long id;
     private String groupId;
     private String surname;
     private String name;
