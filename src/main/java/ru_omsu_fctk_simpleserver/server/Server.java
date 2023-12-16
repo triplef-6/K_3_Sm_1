@@ -20,11 +20,16 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class Server {
-    private static Map<String, EndpointHandler> endpointMap;
-    private static ControllerGroup controllerGroup;
-    private static ControllerStudent controllerStudent;
+    private Map<String, EndpointHandler> endpointMap;
+    private ControllerGroup controllerGroup;
+    private ControllerStudent controllerStudent;
 
-    static {
+    public Server() {
+        System.out.println("Сервер работает только со Студентами и ГруппамиСтудентов");
+        init();
+    }
+
+    private void init() {
         DataBase dataBase = new DataBase();
         RepositoryGroup repositoryGroup = new RepositoryGroup(dataBase);
         RepositoryStudent repositoryStudent = new RepositoryStudent(dataBase);
@@ -88,10 +93,6 @@ public class Server {
         endpointMap.put("deleteStudent", new DeleteStudentHandler(controllerStudent));
         endpointMap.put("editStudent", new EditStudentHandler(controllerStudent));
         endpointMap.put("getStudentById", new GetStudentByIdHandler(controllerStudent));
-    }
-
-    public Server() {
-        System.out.println("Сервер работает только со Студентами и ГруппамиСтудентов");
     }
 
     public Writer executeRequest(Reader reader) throws ServerException {
