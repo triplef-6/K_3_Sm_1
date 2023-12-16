@@ -14,9 +14,9 @@ public class DeleteStudentGroupTest {
         Server server = new Server();
 
         Reader reader1 = new Reader("addStudentGroups::{\"name\":\"MMB-101\"}");
-        Writer writer1 = server.executeRequest(reader1); // 1
+        server.executeRequest(reader1); // 1
         Reader reader2 = new Reader("addStudentGroups::{\"name\":\"MMB-102\"}");
-        Writer writer2 = server.executeRequest(reader2); // 2
+        server.executeRequest(reader2); // 2
 
         Reader reader10 = new Reader("deleteStudentGroup::{\"id\":\"1\"}}");
         Writer writer10 = server.executeRequest(reader10);
