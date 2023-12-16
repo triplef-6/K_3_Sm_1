@@ -12,6 +12,8 @@ public class EditStudentTest {
     @Test
     void editStudentTest() throws Exception {
         Server server = new Server();
+        server.initGroup();
+        server.initStudent();
 
         Reader reader01 = new Reader("addStudentGroups::{\"name\":\"MMB-101\"}");
         server.executeRequest(reader01); // 1
@@ -75,6 +77,8 @@ public class EditStudentTest {
     @Test
     void validateTest() throws Exception {
         Server server = new Server();
+        server.initGroup();
+        server.initStudent();
 
         Reader reader1 = new Reader("editStudent::{\"id\":\"6\",\"groupId\":\"\",\"surname\":\"Носов\",\"name\":\"Никита\",\"patronymic\":\"Отчество\",\"status\":\"учится\"}");
         Writer writer1 = server.executeRequest(reader1);
@@ -122,6 +126,8 @@ public class EditStudentTest {
     @Test
     void exceptionTest() throws Exception {
         Server server = new Server();
+        server.initGroup();
+        server.initStudent();
 
         Reader reader01 = new Reader("addStudentGroups::{\"name\":\"MMB-101\"}");
         server.executeRequest(reader01); // 1

@@ -21,18 +21,19 @@ import java.util.Map;
 
 public class Server {
     private Map<String, EndpointHandler> endpointMap;
+    private DataBase dataBase;
     private ControllerGroup controllerGroup;
     private ControllerStudent controllerStudent;
 
     public Server() {
-        System.out.println("Сервер работает только со Студентами и ГруппамиСтудентов");
-        init();
+        this.dataBase = new DataBase();
+        this.endpointMap = new HashMap<>();
+
+        System.out.println("Server launched");
     }
 
-    private void init() {
-        DataBase dataBase = new DataBase();
+    public void initGroup() {
         RepositoryGroup repositoryGroup = new RepositoryGroup(dataBase);
-        RepositoryStudent repositoryStudent = new RepositoryStudent(dataBase);
 
         ValidatorId validatorId = new ValidatorId();
         ValidateString validateString = new ValidateString();
@@ -42,23 +43,11 @@ public class Server {
         EditStudentGroupsValidator editStudentGroupsValidator = new EditStudentGroupsValidator(validateString, validatorId);
         GetStudentGroupByIdValidator getStudentGroupByIdValidator = new GetStudentGroupByIdValidator(validatorId);
 
-        AddStudentValidator addStudentValidator = new AddStudentValidator(validateString, validatorId);
-        DeleteStudentValidator deleteStudentValidator = new DeleteStudentValidator(validatorId);
-        EditStudentValidator editStudentValidator = new EditStudentValidator(validateString, validatorId);
-        GetStudentByGroupValidator getStudentByGroupValidator = new GetStudentByGroupValidator(validatorId);
-        GetStudentByIdValidator getStudentByIdValidator = new GetStudentByIdValidator(validatorId);
-
         AddStudentGroupsService addStudentGroupsService = new AddStudentGroupsService(repositoryGroup);
         DeleteStudentGroupService deleteStudentGroupService = new DeleteStudentGroupService(repositoryGroup);
         EditStudentGroupsService editStudentGroupsService = new EditStudentGroupsService(repositoryGroup);
         GetStudentGroupByIdService getStudentGroupByIdService = new GetStudentGroupByIdService(repositoryGroup);
         GetStudentGroupsService getStudentGroupsService = new GetStudentGroupsService(repositoryGroup);
-
-        AddStudentService addStudentService = new AddStudentService(repositoryStudent);
-        DeleteStudentService deleteStudentService = new DeleteStudentService(repositoryStudent);
-        EditStudentService editStudentService = new EditStudentService(repositoryStudent);
-        GetStudentByGroupService getStudentByGroupService = new GetStudentByGroupService(repositoryStudent);
-        GetStudentByIdService getStudentByIdService = new GetStudentByIdService(repositoryStudent);
 
         controllerGroup = new ControllerGroup(addStudentGroupsService,
                 deleteStudentGroupService,
@@ -69,6 +58,34 @@ public class Server {
                 editStudentGroupsValidator,
                 deleteStudentGroupValidator,
                 getStudentGroupByIdValidator);
+
+        endpointMap.put("addStudentGroups", new AddStudentGroupsHandler(controllerGroup));
+        endpointMap.put("getStudentGroups", new GetStudentGroupsHandler(controllerGroup));
+        endpointMap.put("deleteStudentGroup", new DeleteStudentGroupHandler(controllerGroup));
+        endpointMap.put("editStudentGroups", new EditStudentGroupsHandler(controllerGroup));
+        endpointMap.put("getStudentGroupById", new GetStudentGroupByIdHandler(controllerGroup));
+
+        System.out.println("Group init");
+    }
+
+    public void initStudent() {
+        RepositoryStudent repositoryStudent = new RepositoryStudent(dataBase);
+
+        ValidatorId validatorId = new ValidatorId();
+        ValidateString validateString = new ValidateString();
+
+        AddStudentValidator addStudentValidator = new AddStudentValidator(validateString, validatorId);
+        DeleteStudentValidator deleteStudentValidator = new DeleteStudentValidator(validatorId);
+        EditStudentValidator editStudentValidator = new EditStudentValidator(validateString, validatorId);
+        GetStudentByGroupValidator getStudentByGroupValidator = new GetStudentByGroupValidator(validatorId);
+        GetStudentByIdValidator getStudentByIdValidator = new GetStudentByIdValidator(validatorId);
+
+        AddStudentService addStudentService = new AddStudentService(repositoryStudent);
+        DeleteStudentService deleteStudentService = new DeleteStudentService(repositoryStudent);
+        EditStudentService editStudentService = new EditStudentService(repositoryStudent);
+        GetStudentByGroupService getStudentByGroupService = new GetStudentByGroupService(repositoryStudent);
+        GetStudentByIdService getStudentByIdService = new GetStudentByIdService(repositoryStudent);
+
         controllerStudent = new ControllerStudent(addStudentService,
                 editStudentService,
                 deleteStudentService,
@@ -80,19 +97,13 @@ public class Server {
                 getStudentByIdValidator,
                 getStudentByGroupValidator);
 
-        endpointMap = new HashMap<>();
-
-        endpointMap.put("addStudentGroups", new AddStudentGroupsHandler(controllerGroup));
-        endpointMap.put("getStudentGroups", new GetStudentGroupsHandler(controllerGroup));
-        endpointMap.put("deleteStudentGroup", new DeleteStudentGroupHandler(controllerGroup));
-        endpointMap.put("editStudentGroups", new EditStudentGroupsHandler(controllerGroup));
-        endpointMap.put("getStudentGroupById", new GetStudentGroupByIdHandler(controllerGroup));
-
         endpointMap.put("addStudent", new AddStudentHandler(controllerStudent));
         endpointMap.put("getStudentByGroup", new GetStudentByGroupHandler(controllerStudent));
         endpointMap.put("deleteStudent", new DeleteStudentHandler(controllerStudent));
         endpointMap.put("editStudent", new EditStudentHandler(controllerStudent));
         endpointMap.put("getStudentById", new GetStudentByIdHandler(controllerStudent));
+
+        System.out.println("Student init");
     }
 
     public Writer executeRequest(Reader reader) throws ServerException {

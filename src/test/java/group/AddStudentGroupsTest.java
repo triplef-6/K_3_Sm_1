@@ -11,6 +11,7 @@ public class AddStudentGroupsTest {
     @Test
     void addStudentGroupsTest() throws Exception {
         Server server = new Server();
+        server.initGroup();
 
         Reader reader1 = new Reader("addStudentGroups::{\"name\":\"MMB-101\"}");
         Writer writer1 = server.executeRequest(reader1);
@@ -27,6 +28,7 @@ public class AddStudentGroupsTest {
     @Test
     void validateTest() throws Exception {
         Server server = new Server();
+        server.initGroup();
 
         Reader reader1 = new Reader("addStudentGroups::{\"name\":\"\"}");
         Writer writer1 = server.executeRequest(reader1);

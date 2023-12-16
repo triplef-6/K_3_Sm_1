@@ -12,6 +12,7 @@ public class EditStudentGroupsTest {
     @Test
     void editStudentGroupsTest() throws Exception {
         Server server = new Server();
+        server.initGroup();
 
         Reader reader0 = new Reader("addStudentGroups::{\"name\":\"MMB-101\"}");
         server.executeRequest(reader0); // 1
@@ -28,9 +29,9 @@ public class EditStudentGroupsTest {
     }
 
     @Test
-    @Ignore
     void validateTest() throws Exception {
         Server server = new Server();
+        server.initGroup();
 
         Reader reader1 = new Reader("editStudentGroups::{\"id\":\"\",\"name\":\"MMB-101-O1\"}");
         Writer writer1 = server.executeRequest(reader1);
@@ -42,13 +43,12 @@ public class EditStudentGroupsTest {
         assertEquals(writer1.toString(), "400::6:\"Validation error\":[\"id: zero\"]");
         assertEquals(writer2.toString(), "400::6:\"Validation error\":[\"name: empty\"]");
         assertEquals(writer3.toString(), "400::6:\"Validation error\":[\"name: big\"]");
-
     }
 
     @Test
-    @Ignore
     void exceptionTest() throws Exception {
         Server server = new Server();
+        server.initGroup();
 
         Reader reader1 = new Reader("editStudentGroups::{\"id\":\"5\",\"name\":\"MMB-101-O1\"}");
         Writer writer1 = server.executeRequest(reader1);

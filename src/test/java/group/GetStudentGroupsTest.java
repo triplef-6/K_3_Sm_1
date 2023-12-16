@@ -12,6 +12,7 @@ public class GetStudentGroupsTest {
     @Test
     void getStudentGroupsTest() throws Exception {
         Server server = new Server();
+        server.initGroup();
 
         Reader reader0 = new Reader("getStudentGroups:: ");
         Writer writer0 = server.executeRequest(reader0);

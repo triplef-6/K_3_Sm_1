@@ -10,6 +10,7 @@ public class GetStudentGroupByIdTest {
     @Test
     void getStudentGroupByIdTest() throws Exception {
         Server server = new Server();
+        server.initGroup();
 
         Reader reader1 = new Reader("addStudentGroups::{\"name\":\"MMB-101\"}");
         server.executeRequest(reader1);
@@ -33,6 +34,7 @@ public class GetStudentGroupByIdTest {
     @Test
     void validateTest() throws Exception {
         Server server = new Server();
+        server.initGroup();
 
         Reader reader1 = new Reader("getStudentGroupById::{\"id\":\"\"}");
         Writer writer1 = server.executeRequest(reader1);
@@ -43,6 +45,8 @@ public class GetStudentGroupByIdTest {
     @Test
     void exceptionTest() throws Exception {
         Server server = new Server();
+        server.initGroup();
+
         Reader reader1 = new Reader("getStudentGroupById::{\"id\":\"5\"}");
         Writer writer1 = server.executeRequest(reader1);
 
