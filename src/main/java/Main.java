@@ -27,7 +27,7 @@ public class Main {
             Reader[] readers = {
                     new Reader("addStudentGroups::{\"name\":\"MMB-102\"}"),
                     new Reader("getStudentGroupById::{\"id\":\"1\"}"),
-                    new Reader("editStudentGroups::{\"id\":\"1\",\"name\":\"MMB-101\"}"),
+                    new Reader("editStudentGroups::{\"id\":\"1\",\"name\":\"MMB-103\"}"),
                     new Reader("getStudentGroupById::{\"id\":\"1\"}")
                     /*new Reader("addStudentGroups::{\"name\":\"MMB-101\"}"),
                     new Reader("addStudentGroups::{\"name\":\"MMB-102\"}"),
