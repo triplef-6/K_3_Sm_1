@@ -25,7 +25,7 @@ public class ComonResponse<T> {
         this.details = details;
     }
 
-    public T getData() {
+    public Object getData() {
         return data;
     }
 
