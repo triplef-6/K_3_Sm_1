@@ -15,6 +15,7 @@ public class DataBase {
     private Map<Long, Group> groupMap;
     private long maxGroupId;
     private Map<Long, Subject> subjectMap;
+    private long maxSubjectId;
     private Map<Long, Lesson> lessonMap;
     private Map<Long, VisitingLesson> visitingLessonMap;
 
@@ -24,6 +25,14 @@ public class DataBase {
 
         this.groupMap = new HashMap<>();
         this.maxGroupId = 1;
+
+        this.subjectMap = new HashMap<>();
+        this.maxSubjectId = 1;
+    }
+    public long nextSubjectId() {
+        long idRet = maxSubjectId;
+        this.maxSubjectId++;
+        return idRet;
     }
     public long nextStudentId() {
         long idRet = maxStudentId;
