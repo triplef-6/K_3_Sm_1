@@ -7,14 +7,15 @@ import ru_omsu_fctk_simpleserver.controllers.ResponseEntity;
 import ru_omsu_fctk_simpleserver.exception.HandleException;
 import ru_omsu_fctk_simpleserver.request.subject.AddSubjectRequest;
 import ru_omsu_fctk_simpleserver.response.subject.AddSubjectsResponse;
+import ru_omsu_fctk_simpleserver.server.handlers.EndpointHandler;
 
-public class AddSubjectHandler {
+public class AddSubjectHandler implements EndpointHandler {
     private ControllerSubject controllerSubject;
 
     public AddSubjectHandler(ControllerSubject controllerSubject) {
         this.controllerSubject = controllerSubject;
     }
-
+@Override
     public String handel(String json) throws HandleException {
         ObjectMapper mapper = new ObjectMapper();
         try {

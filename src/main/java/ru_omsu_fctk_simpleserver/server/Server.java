@@ -1,20 +1,28 @@
 package ru_omsu_fctk_simpleserver.server;
 
+import ru_omsu_fctk_simpleserver.controllers.ControllerSubject;
 import ru_omsu_fctk_simpleserver.controllers.group.ControllerGroup;
 import ru_omsu_fctk_simpleserver.controllers.student.ControllerStudent;
 import ru_omsu_fctk_simpleserver.exception.ServerException;
 import ru_omsu_fctk_simpleserver.repositories.DataBase;
 import ru_omsu_fctk_simpleserver.repositories.RepositoryGroup;
 import ru_omsu_fctk_simpleserver.repositories.RepositoryStudent;
+import ru_omsu_fctk_simpleserver.repositories.RepositorySubject;
 import ru_omsu_fctk_simpleserver.server.handlers.EndpointHandler;
 import ru_omsu_fctk_simpleserver.server.handlers.group.*;
 import ru_omsu_fctk_simpleserver.server.handlers.student.*;
+import ru_omsu_fctk_simpleserver.server.handlers.subject.AddSubjectHandler;
+import ru_omsu_fctk_simpleserver.server.handlers.subject.DeleteSubjectHandler;
 import ru_omsu_fctk_simpleserver.services.group.*;
 import ru_omsu_fctk_simpleserver.services.student.*;
+import ru_omsu_fctk_simpleserver.services.subject.AddSubjectService;
+import ru_omsu_fctk_simpleserver.services.subject.DeleteSubjectService;
 import ru_omsu_fctk_simpleserver.validator.group.*;
 import ru_omsu_fctk_simpleserver.validator.primitive.ValidateString;
 import ru_omsu_fctk_simpleserver.validator.primitive.ValidatorId;
 import ru_omsu_fctk_simpleserver.validator.student.*;
+import ru_omsu_fctk_simpleserver.validator.subject.AddSubjectValidator;
+import ru_omsu_fctk_simpleserver.validator.subject.DeleteSubjectValidator;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -24,6 +32,7 @@ public class Server {
     private DataBase dataBase;
     private ControllerGroup controllerGroup;
     private ControllerStudent controllerStudent;
+    private ControllerSubject controllerSubject;
 
     public Server() {
         this.dataBase = new DataBase();
@@ -104,6 +113,31 @@ public class Server {
         endpointMap.put("getStudentById", new GetStudentByIdHandler(controllerStudent));
 
         System.out.println("Student init");
+    }
+
+    public void initSubject() {
+        RepositorySubject repositorySubject = new RepositorySubject(dataBase);
+
+        ValidatorId validatorId = new ValidatorId();
+        ValidateString validateString = new ValidateString();
+
+        AddSubjectValidator addSubjectValidator = new AddSubjectValidator(validateString);
+        DeleteSubjectValidator deleteSubjectValidator = new DeleteSubjectValidator(validatorId);
+
+
+        AddSubjectService addStudentGroupsService = new AddSubjectService(repositorySubject);
+        DeleteSubjectService deleteStudentGroupService = new DeleteSubjectService(repositorySubject);
+
+
+        controllerSubject = new ControllerSubject(addStudentGroupsService,
+                deleteStudentGroupService,
+                addSubjectValidator,
+                deleteSubjectValidator);
+
+        endpointMap.put("addSubject", new AddSubjectHandler(controllerSubject));
+        endpointMap.put("deleteSubject", new DeleteSubjectHandler(controllerSubject));
+
+        System.out.println("Subject init");
     }
 
     public Writer executeRequest(Reader reader) throws ServerException {

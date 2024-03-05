@@ -8,14 +8,16 @@ import ru_omsu_fctk_simpleserver.controllers.group.ControllerGroup;
 import ru_omsu_fctk_simpleserver.exception.HandleException;
 import ru_omsu_fctk_simpleserver.request.subject.DeleteSubjectRequest;
 import ru_omsu_fctk_simpleserver.response.subject.DeleteSubjectResponse;
+import ru_omsu_fctk_simpleserver.server.handlers.EndpointHandler;
 
-public class DeleteSubjectHandler {
+public class DeleteSubjectHandler implements EndpointHandler {
     private ControllerSubject controllerSubject;
 
     public DeleteSubjectHandler(ControllerSubject controllerSubject) {
         this.controllerSubject = controllerSubject;
     }
 
+    @Override
     public String handel(String json) throws HandleException {
         ObjectMapper mapper = new ObjectMapper();
         try {
