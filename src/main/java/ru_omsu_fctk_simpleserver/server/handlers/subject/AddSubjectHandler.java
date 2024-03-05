@@ -4,7 +4,6 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import ru_omsu_fctk_simpleserver.controllers.ComonResponse;
 import ru_omsu_fctk_simpleserver.controllers.ControllerSubject;
 import ru_omsu_fctk_simpleserver.controllers.ResponseEntity;
-import ru_omsu_fctk_simpleserver.controllers.group.ControllerGroup;
 import ru_omsu_fctk_simpleserver.exception.HandleException;
 import ru_omsu_fctk_simpleserver.request.subject.AddSubjectRequest;
 import ru_omsu_fctk_simpleserver.response.subject.AddSubjectsResponse;
