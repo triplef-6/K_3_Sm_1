@@ -17,7 +17,7 @@ public class AddSubjectService {
     }
 
 
-    public AddSubjectsResponse addStudentGroups(AddSubjectRequest request) {
+    public AddSubjectsResponse addSubject(AddSubjectRequest request) {
         return new AddSubjectsResponse(repositorySubject.addSubject(new Subject(request.getName(), request.getShortName())));
     }
 }
