@@ -5,12 +5,19 @@ import java.util.Objects;
 public class Subject {
     private Long id;
     private String name;
+    private String shortName;
+
 
     public Subject() {}
+    public Subject(String name, String shortName) {
+        this.name = name;
+        this.shortName = shortName;
+    }
 
-    public Subject(Long id, String name) {
+    public Subject(Long id, String name, String shortName) {
         this.id = id;
         this.name = name;
+        this.shortName = shortName;
     }
 
     public Long getId() {
@@ -27,6 +34,14 @@ public class Subject {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public String getShortName() {
+        return shortName;
+    }
+
+    public void setShortName(String shortName) {
+        this.shortName = shortName;
     }
 
     @Override
