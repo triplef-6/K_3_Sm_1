@@ -7,10 +7,15 @@ import java.util.List;
 public class RepositorySubject implements IRepositorySubject {
     private DataBase base;
 
+    public RepositorySubject(DataBase base) {
+        this.base = base;
+    }
+
     @Override
     public long addSubject(Subject subject) {
-        System.out.println("Добавлено(типа)");
-        return 6;
+        long subjectId = base.nextGroupId();
+        base.getSubjectMap().put(subjectId, subject);
+        return subjectId;
     }
 
     @Override
@@ -20,7 +25,10 @@ public class RepositorySubject implements IRepositorySubject {
 
     @Override
     public void deleteSubject(long id) {
-        System.out.println("Удалено(типа)");
+        if (!base.getSubjectMap().containsKey(id)) {
+            throw new RuntimeException("Нет объекта с данным id");
+        }
+        base.getSubjectMap().remove(id);
     }
 
     @Override
