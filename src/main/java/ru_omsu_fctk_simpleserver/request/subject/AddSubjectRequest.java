@@ -5,11 +5,21 @@ package ru_omsu_fctk_simpleserver.request.subject;
  */
 public class AddSubjectRequest {
     private String name;
+    private String shortName;
 
     public AddSubjectRequest() {}
 
-    public AddSubjectRequest(String name) {
+    public AddSubjectRequest(String name, String shortName) {
         this.name = name;
+        this.shortName = shortName;
+    }
+
+    public String getShortName() {
+        return shortName;
+    }
+
+    public void setShortName(String shortName) {
+        this.shortName = shortName;
     }
 
     public String getName() {
