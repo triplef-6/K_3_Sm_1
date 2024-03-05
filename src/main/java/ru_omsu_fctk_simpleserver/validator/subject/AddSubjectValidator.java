@@ -10,6 +10,10 @@ import java.util.List;
 public class AddSubjectValidator implements Validator<AddSubjectRequest> {
     private ValidateString validateString;
 
+    public AddSubjectValidator(ValidateString validateString) {
+        this.validateString = validateString;
+    }
+
     @Override
     public List<String> validator(AddSubjectRequest request) {
 
@@ -17,6 +21,10 @@ public class AddSubjectValidator implements Validator<AddSubjectRequest> {
         validateString.validateStringNotEmpty(request.getName(), errors, "name", "empty");
         validateString.validateStringNotNull(request.getName(), errors, "name", "null");
         validateString.validateStringBig(request.getName(), errors, "name", "big", 20);
+
+        validateString.validateStringNotEmpty(request.getShortName(), errors, "name", "empty");
+        validateString.validateStringNotNull(request.getShortName(), errors, "name", "null");
+        validateString.validateStringBig(request.getShortName(), errors, "name", "big", 20);
 
         return errors;
     }

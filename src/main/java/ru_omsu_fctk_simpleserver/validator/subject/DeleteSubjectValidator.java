@@ -10,6 +10,10 @@ import java.util.List;
 public class DeleteSubjectValidator implements Validator<DeleteSubjectRequest> {
     private ValidatorId validatorId;
 
+    public DeleteSubjectValidator(ValidatorId validatorId) {
+        this.validatorId = validatorId;
+    }
+
     @Override
     public List<String> validator(DeleteSubjectRequest request) {
         List<String> errors = new ArrayList<>();
