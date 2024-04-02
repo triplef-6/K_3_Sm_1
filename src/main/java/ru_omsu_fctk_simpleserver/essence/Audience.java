@@ -3,21 +3,18 @@ package ru_omsu_fctk_simpleserver.essence;
 public class Audience {
     private Long id;
     private String number;
-    private int capacity;
     private int buildingNumber;
 
     public Audience() {
     }
 
-    public Audience(Long id,String number, int capacity, int buildingNumber) {
+    public Audience(Long id,String number, int buildingNumber) {
         this.id = id;
         this.buildingNumber = buildingNumber;
-        this.capacity = capacity;
         this.number = number;
     }
-    public Audience(String number, int capacity, int buildingNumber) {
+    public Audience(String number, int buildingNumber) {
         this.buildingNumber = buildingNumber;
-        this.capacity = capacity;
         this.number = number;
     }
 
@@ -29,13 +26,6 @@ public class Audience {
         this.buildingNumber = buildingNumber;
     }
 
-    public int getCapacity() {
-        return capacity;
-    }
-
-    public void setCapacity(int capacity) {
-        this.capacity = capacity;
-    }
 
     public String getNumber() {
         return number;
