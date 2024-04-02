@@ -21,7 +21,6 @@ public class Audience {
     public int getBuildingNumber() {
         return buildingNumber;
     }
-
     public void setBuildingNumber(int buildingNumber) {
         this.buildingNumber = buildingNumber;
     }
