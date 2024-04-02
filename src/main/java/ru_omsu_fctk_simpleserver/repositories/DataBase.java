@@ -30,6 +30,8 @@ public class DataBase {
 
         this.subjectMap = new HashMap<>();
         this.maxSubjectId = 1;
+        this.audienceMap = new HashMap<>();
+        this.maxAudienceId = 1;
     }
     public long nextSubjectId() {
         long idRet = maxSubjectId;
