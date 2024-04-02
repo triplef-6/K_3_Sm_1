@@ -1,25 +1,29 @@
 package ru_omsu_fctk_simpleserver.server;
 
+import ru_omsu_fctk_simpleserver.controllers.ControllerAudience;
 import ru_omsu_fctk_simpleserver.controllers.ControllerSubject;
 import ru_omsu_fctk_simpleserver.controllers.group.ControllerGroup;
 import ru_omsu_fctk_simpleserver.controllers.student.ControllerStudent;
 import ru_omsu_fctk_simpleserver.exception.ServerException;
-import ru_omsu_fctk_simpleserver.repositories.DataBase;
-import ru_omsu_fctk_simpleserver.repositories.RepositoryGroup;
-import ru_omsu_fctk_simpleserver.repositories.RepositoryStudent;
-import ru_omsu_fctk_simpleserver.repositories.RepositorySubject;
+import ru_omsu_fctk_simpleserver.repositories.*;
 import ru_omsu_fctk_simpleserver.server.handlers.EndpointHandler;
+import ru_omsu_fctk_simpleserver.server.handlers.audience.AddAudienceHandler;
+import ru_omsu_fctk_simpleserver.server.handlers.audience.GetAudiencesHandler;
 import ru_omsu_fctk_simpleserver.server.handlers.group.*;
 import ru_omsu_fctk_simpleserver.server.handlers.student.*;
 import ru_omsu_fctk_simpleserver.server.handlers.subject.AddSubjectHandler;
 import ru_omsu_fctk_simpleserver.server.handlers.subject.DeleteSubjectHandler;
+import ru_omsu_fctk_simpleserver.services.audience.AddAudienceService;
+import ru_omsu_fctk_simpleserver.services.audience.GetAudiencesService;
 import ru_omsu_fctk_simpleserver.services.group.*;
 import ru_omsu_fctk_simpleserver.services.student.*;
 import ru_omsu_fctk_simpleserver.services.subject.AddSubjectService;
 import ru_omsu_fctk_simpleserver.services.subject.DeleteSubjectService;
+import ru_omsu_fctk_simpleserver.validator.audience.AddAudienceValidator;
 import ru_omsu_fctk_simpleserver.validator.group.*;
 import ru_omsu_fctk_simpleserver.validator.primitive.ValidateString;
 import ru_omsu_fctk_simpleserver.validator.primitive.ValidatorId;
+import ru_omsu_fctk_simpleserver.validator.primitive.ValidatorInt;
 import ru_omsu_fctk_simpleserver.validator.student.*;
 import ru_omsu_fctk_simpleserver.validator.subject.AddSubjectValidator;
 import ru_omsu_fctk_simpleserver.validator.subject.DeleteSubjectValidator;
@@ -138,6 +142,31 @@ public class Server {
         endpointMap.put("deleteSubject", new DeleteSubjectHandler(controllerSubject));
 
         System.out.println("Subject init");
+    }
+    public void initAudience() {
+        RepositoryAudience repositoryAudience = new RepositoryAudience(dataBase);
+
+        ValidatorInt validatorInt = new ValidatorInt();
+        ValidateString validateString = new ValidateString();
+
+        AddAudienceValidator addAudienceValidator = new AddAudienceValidator(validateString, validatorInt);
+
+
+        AddAudienceService addAudienceService = new AddAudienceService(repositoryAudience);
+        GetAudiencesService getAudiencesService = new GetAudiencesService(repositoryAudience);
+
+
+        ControllerAudience controllerAudience= new ControllerAudience(addAudienceService,
+                getAudiencesService,
+                addAudienceValidator);
+
+        endpointMap.put("addAudience", new AddAudienceHandler(controllerAudience));
+        endpointMap.put("getAudiences", new GetAudiencesHandler(controllerAudience));
+
+        System.out.println("Audience init");
+
+
+
     }
 
     public Writer executeRequest(Reader reader) throws ServerException {
