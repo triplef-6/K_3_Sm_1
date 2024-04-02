@@ -11,6 +11,8 @@ import java.util.Map;
 public class DataBase {
     private Map<Long, Student> studentMap;
     private long maxStudentId;
+    private Map<Long, Audience> audienceMap;
+    private long maxAudienceId;
     private Map<Long, Teacher> teacherMap;
     private Map<Long, Group> groupMap;
     private long maxGroupId;
@@ -45,6 +47,11 @@ public class DataBase {
         this.maxGroupId++;
         return idRet;
     }
+    public long nextAudienceId() {
+        long idRet = maxAudienceId;
+        this.maxAudienceId++;
+        return idRet;
+    }
 
     public Map<Long, Student> getStudentMap() {
         return studentMap;
@@ -64,6 +71,10 @@ public class DataBase {
 
     public Map<Long, Lesson> getLessonMap() {
         return lessonMap;
+    }
+
+    public Map<Long, Audience> getAudienceMap() {
+        return audienceMap;
     }
 
     public Map<Long, VisitingLesson> getVisitingLessonMap() {
